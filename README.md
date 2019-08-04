@@ -36,7 +36,7 @@ vm_specs:
 # os_specs[‘windows’].guest, .scsi, .nic, .image
 #
 # os_profile: “redhat7”
-# os_specs[os_profile].guest, .scsi, .nic 
+# os_specs[os_profile].guest,.scsi, .nic, .image
 
 os_profile: redhat7		# guaranteed default value
 os_specs:
