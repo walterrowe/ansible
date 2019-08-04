@@ -1,0 +1,45 @@
+---
+- hosts: localhost
+
+  vars:
+
+    # default to type “web” server
+    srv_profile: “web”
+
+    # dictionary of logical volumes by server type
+    vol_specs:
+      general: []
+      web: [
+        { mount: “sites”,    pdevs: “sdb” }
+      ]
+      oracle: [
+        { mount: “apps”,     pdevs: “sdb” },
+        { mount: “scratch”,  pdevs: “sdc” },
+        { mount: “oradata”,  pdevs: “sdd” },
+        { mount: “orafra”,   pdevs: “sde” }
+      ]
+      mysql: [
+        { mount: “apps”,     pdevs: “sdb” },
+        { mount: “scratch”,  pdevs: “sdc” },
+        { mount: “mydata”,   pdevs: “sdd” },
+        { mount: “mybackup”, pdevs: “sde” }
+      ]
+
+  tasks:
+
+    # https://docs.ansible.com/ansible/latest/modules/lvol_module.html
+    - name: Create logical volumes according to server profile “{{ srv_profile }}”
+      lvol:
+        vg: “{{ ‘vg_’+item.mount }}”
+        lv: “{{ ‘lv_’+item.mount }}”
+        size: “100%FREE”
+        pvs: “{{ ‘/dev/‘+item.pdevs }}”
+      loop: “{{ vol_specs[srv_profile] }}”
+
+
+    - name: Create filesystems according to server profile “{{ srv_profile }}”
+      filesystem:
+        device: “{{ ‘/dev/vg_’+item.mount+’/lv_’+item.mount }}”
+        fstype: xfs
+        resize: yes
+     loop: “{{ vol_specs[srv_profile] }}”

@@ -1,0 +1,33 @@
+---
+- hosts: localhost
+
+  vars:
+
+    # default to type “web” server
+    srv_profile: “web”
+
+    # dictionary of packages by server type
+    pkg_specs:
+      web: [
+        “pkga”,
+        “pkgb”,
+        “pkgc”
+      ]
+      oracle: [
+        “pkga”,
+        “pkgb”,
+        “pkgc”
+      ]
+      mysql: [
+        “pkga”,
+        “pkgb”,
+        “pkgc”
+      ]
+
+  tasks:
+
+    # https://docs.ansible.com/ansible/latest/modules/yum_module.html
+    - name: Install packages according to server profile “{{ srv_profile }}”
+      yum:
+        name: “{{ pkg_specs[srv_profile] }}”
+        state: present
