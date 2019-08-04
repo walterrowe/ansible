@@ -31,20 +31,3 @@
       debug:
         msg: “{{ ‘/dev/vg_’+item.mount+’/lv_’+item.mount }}”
       loop: ”{{ vol_specs[srv_profile] }}”
-
-#    # https://docs.ansible.com/ansible/latest/modules/lvol_module.html
-#    - name: Create logical volumes according to server profile “{{ srv_profile }}”
-#      lvol:
-#        vg: “{{ ‘vg_’+item.mount }}”
-#        lv: “{{ ‘lv_’+item.mount }}”
-#        size: “100%FREE”
-#        pvs: “{{ ‘/dev/‘+item.pdevs }}”
-#      loop: “{{ vol_specs[srv_profile] }}”
-#
-#
-#    - name: Create filesystems according to server profile “{{ srv_profile }}”
-#      filesystem:
-#        device: “{{ ‘/dev/vg_’+item.mount+’/lv_’+item.mount }}”
-#        fstype: xfs
-#        resize: yes
-#     loop: “{{ vol_specs[srv_profile] }}”
