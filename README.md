@@ -91,7 +91,7 @@ fs_specs:
     { size_gb: 100, type: thin, datastore: somewhere }, 	# F:
     { size_gb: 100, type: thin, datastore: somewhere }, 	# G:
     { size_gb: 100, type: thin, datastore: somewhere }, 	# H:
-    { size_gb: 100, type: thin, datastore: somewhere } 	# I:
+    { size_gb: 100, type: thin, datastore: somewhere } 		# I:
   ]
 ```
 You can loop through two lists in parallel with “with_together”.
