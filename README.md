@@ -2,7 +2,7 @@
 
 Python expressions are valid in YAML playbook variable evaluations.
 
-## Accessing Structured Data via Variable
+### Accessing Structured Data via Variable
 
 This describes how to use the value of a variable as a key into a structured dictionary to extract values. The concept would be that the variable’s value would be passed into the playbook at run time. In Ansible Tower / AWX, a multiple choice survey can restrict selection to known values.
 ```
@@ -120,7 +120,7 @@ with_together:
   - “{{ vms_list }}”
   - “{{ mac_addr }}”
 ```
-## String and Variable Operations
+### String and Variable Operations
 
 Strings in Ansible are strings in Python which are lists of characters. Lists can be concatenated using the “+” operating.
 ```
@@ -166,6 +166,6 @@ You can extract a “substring” using list notation since strings are lists of
 This link provides an example of how to build a list in a loop.
 https://www.jeffgeerling.com/blog/2017/adding-strings-array-ansible
 
-## Useful References and Examples
+### Useful References and Examples
 
 Read about Python strings to learn more about Ansible strings.
