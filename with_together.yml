@@ -28,4 +28,4 @@
 
     - debug:
         msg: VM “{{ item.name }}"
-      loop: ”{{ [ vms_test[profile] ] }}”
+      loop: ”{{ vms_test[profile] }}”
