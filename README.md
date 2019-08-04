@@ -12,6 +12,7 @@ This describes how to use the value of a variable as a key into a structured dic
 # vm_specs[‘vm_small’ ].cpu, .ram
 # vm_specs[‘vm_medium’].cpu, .ram
 # vm_specs[‘vm_large’ ].cpu, .ram
+#
 # vm_profile: “vm_small”
 # vm_specs[vm_profile ].cpu, .ram
 
@@ -31,9 +32,10 @@ vm_specs:
 # structured data complex dictionary
 #
 # os_specs[‘redhat7’].guest, .scsi, .nic, .image
-# os_specs[‘ubuntu’].guest, .scsi, .nic, .image
+# os_specs[‘ubuntu’ ].guest, .scsi, .nic, .image
 # os_specs[‘windows’].guest, .scsi, .nic, .image
 #
+# os_profile: “redhat7”
 # os_specs[os_profile].guest, .scsi, .nic 
 
 os_profile: redhat7		# guaranteed default value
@@ -58,11 +60,12 @@ os_specs:
 # structured dictionary of JSON lists
 #
 # fs_specs[‘general’]
-# fs_specs[‘oracle’]
-# fs_specs[‘mysql’]
-# fs_specs[‘web’]
-# fs_specs[‘mssql’]
+# fs_specs[‘oracle’ ]
+# fs_specs[‘mysql’  ]
+# fs_specs[‘web’    ]
+# fs_specs[‘mssql’  ]
 #
+# fs_profile: “oracle”
 # fs_specs[fs_profile]
 
 fs_profile: general
