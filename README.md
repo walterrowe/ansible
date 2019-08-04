@@ -138,25 +138,25 @@ The value of var5 is “one for the money”.
 
 You can split strings with a delimiter.
 ```
-	string: “this is a string”
-	{{ string.split }}			# yields “this”, “is”, “a”, “string”
+string: “this is a string”
+{{ string.split }}			# yields “this”, “is”, “a”, “string”
 ```
 will split on the spaces by default and yield “this”, “is”, “a”, “string”.
 ```
-	address: 192.168.100.10
-	{{ address.split(‘.’) }}	# yields “192”, “160”, “100”, “10”
+address: 192.168.100.10
+{{ address.split(‘.’) }}	# yields “192”, “160”, “100”, “10”
 ```
 You can split strings with a delimiter and select a specific items from the resulting list.
 ```
 address: 192.168.100.10
-{{ address.split(‘.’)[0] }}		# yields “192”
-{{ address.split(‘.’)[2] }}		# yields “100”
+{{ address.split(‘.’)[0] }}	# yields “192”
+{{ address.split(‘.’)[2] }}	# yields “100”
 {{ address.split(‘.’)[-1] }}	# yields “10”
 ```
 And you can use splitext to split a filename on dot to get the basename.
 ```
 filename: basename.iso
-{{ address | splitext }}		# yields “basename”
+{{ address | splitext }}	# yields “basename”
 ```
 You can extract a “substring” using list notation since strings are lists of characters. Remember that lists start with index 0. Substring extract would be specified by index of starting position, a colon, and the number of list items to extract.
 ```
