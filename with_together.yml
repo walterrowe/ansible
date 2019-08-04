@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  vars:
+    vms_list: [
+      { name: "vm1", os: "redhat7", fs: "general", size: "vm_small" },
+      { name: "vm2", os: "redhat7", fs: "web", size: "vm_small" },
+      { name: "vm3", os: "redhat7", fs: "oracle", size: "vm_large" }
+    ]
+    mac_addr: [
+      "00:00:00:00:00:00",
+      "00:00:00:00:00:44",
+      "00:00:00:00:00:FF"
+    ]
+
+  tasks:
+    - debug:
+        msg: VM “{{ item.0.name }}" has MAC address is “{{ item.1 }}”
+      with_together:
+        - "{{ vms_list }}"
+        - "{{ mac_addr }}"
