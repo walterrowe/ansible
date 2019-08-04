@@ -97,7 +97,7 @@ fs_specs:
     { size_gb: 100, type: thin, datastore: somewhere }  # I:
   ]
 ```
-You can loop through two lists in parallel with “with_together”.
+You can loop through two lists in parallel using “with_together”.
 ```
 vms_list:[
   { name:“vm1”, os:“redhat7”, fs:“general”, size:“vm_small” },
