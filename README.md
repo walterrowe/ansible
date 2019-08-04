@@ -72,13 +72,13 @@ fs_specs:
   ]
   oracle: [
     { size_gb: 60, type: thin, datastore: somewhere }, 	# /
-    { size_tb: 1, type: thin, datastore: somewhere }, 	# /apps
-    { size_tb: 1, type: thin, datastore: somewhere } 	# /data
+    { size_tb:  1, type: thin, datastore: somewhere }, 	# /apps
+    { size_tb:  1, type: thin, datastore: somewhere } 	# /data
   ]
   mysql: [
     { size_gb: 60, type: thin, datastore: somewhere }, 	# /
-    { size_tb: 1, type: thin, datastore: somewhere }, 	# /apps
-    { size_tb: 1, type: thin, datastore: somewhere } 	# /data
+    { size_tb:  1, type: thin, datastore: somewhere }, 	# /apps
+    { size_tb:  1, type: thin, datastore: somewhere } 	# /data
   ]
   web: [
     { size_gb: 60, type: thin, datastore: somewhere }, 	# /
