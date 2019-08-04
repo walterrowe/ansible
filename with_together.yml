@@ -1,18 +1,22 @@
 ---
 - hosts: localhost
   vars:
+
     profile: redhat
+
     vms_test:
       redhat: [
-        { name: "vm1", os: "redhat7", fs: "general", size: "vm_small" },
-        { name: "vm2", os: "redhat7", fs: "web",     size: "vm_small" },
-        { name: "vm3", os: "redhat7", fs: "oracle",  size: "vm_large" }
-      ]
+          { name: "vm1", os: "redhat7", fs: "general", size: "vm_small" },
+          { name: "vm2", os: "redhat7", fs: "web",     size: "vm_small" },
+          { name: "vm3", os: "redhat7", fs: "oracle",  size: "vm_large" }
+        ]
+
     vms_list: [
-      { name: "vm1", os: "redhat7", fs: "general", size: "vm_small" },
-      { name: "vm2", os: "redhat7", fs: "web", size: "vm_small" },
-      { name: "vm3", os: "redhat7", fs: "oracle", size: "vm_large" }
+      { name: "vm1", os: "redhat7", fs: "general",   size: "vm_small" },
+      { name: "vm2", os: "redhat7", fs: "web",       size: "vm_small" },
+      { name: "vm3", os: "redhat7", fs: "oracle",    size: "vm_large" }
     ]
+
     mac_addr: [
       "00:00:00:00:00:00",
       "00:00:00:00:00:44",
