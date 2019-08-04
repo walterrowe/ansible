@@ -29,6 +29,8 @@
 
     - name: paths
       debug:
+        msg: “{{ ‘/dev/vg_’+item.mount+’/lv_’+item.mount }}”
+      loop: “{{ vol_specs[srv_profile] }}”
 
 #    # https://docs.ansible.com/ansible/latest/modules/lvol_module.html
 #    - name: Create logical volumes according to server profile “{{ srv_profile }}”
