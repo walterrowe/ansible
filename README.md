@@ -5,7 +5,7 @@ Python expressions are valid in YAML playbook variable evaluations.
 Accessing Structured Data via Variable
 
 This describes how to use the value of a variable as a key into a structured dictionary to extract values. The concept would be that the variable’s value would be passed into the playbook at run time. In Ansible Tower / AWX, a multiple choice survey can restrict selection to known values.
-'''
+```
 # virtual machine resource profiles
 # structured data complex dictionary
 #
@@ -93,9 +93,9 @@ fs_specs:
     { size_gb: 100, type: thin, datastore: somewhere }, 	# H:
     { size_gb: 100, type: thin, datastore: somewhere } 	# I:
   ]
-'''
+```
 You can loop through two lists in parallel with “with_together”.
-'''
+```
 vms_list:[
   { name:“vm1”, os:“redhat7”, fs:“general”, size:“vm_small” },
   { name:“vm2”, os:“redhat7”, fs:“web”.   , size:“vm_small” },
@@ -119,50 +119,50 @@ debug:
 with_together:
   - “{{ vms_list }}”
   - “{{ mac_addr }}”
-'''
+```
 ## String and Variable Operations
 
 Strings in Ansible are strings in Python which are lists of characters. Lists can be concatenated using the “+” operating.
-'''
+```
 var1: “one”
 var2: “two”
 var3: “three”
 var4: “{{ var1 + var2 + var3 }}”
 var5: “{{ var1 + ‘ for the money’ }}”
-'''
+```
 The value of var4 is “onetwothree”.
 The value of var5 is “one for the money”.
 
 You can split strings with a delimiter.
-'''
+```
 	string: “this is a string”
 	{{ string.split }}			# yields “this”, “is”, “a”, “string”
-'''
+```
 will split on the spaces by default and yield “this”, “is”, “a”, “string”.
-'''
+```
 	address: 192.168.100.10
 	{{ address.split(‘.’) }}		# yields “192”, “160”, “100”, “10”
-'''
+```
 You can split strings with a delimiter and select a specific items from the resulting list.
-'''
+```
 	address: 192.168.100.10
 	{{ address.split(‘.’)[0] }}			# yields “192”
 	{{ address.split(‘.’)[2] }}			# yields “100”
 	{{ address.split(‘.’)[-1] }}		# yields “10”
-'''
+```
 And you can use splitext to split a filename on dot to get the basename.
-'''
+```
 	filename: basename.iso
 	{{ address | splitext }}		# yields “basename”
-'''
+```
 You can extract a “substring” using list notation since strings are lists of characters. Remember that lists start with index 0. Substring extract would be specified by index of starting position, a colon, and the number of list items to extract.
-'''
+```
   string: “onetwothree”
 	{{ string[0:3] }}		# yields “one”
 	{{ string[3:3] }}		# yields “two”
 	{{ string[6:5] }}		# yields “three”
 	{{ string[4:1] }}		# yields “w”
-'''
+```
 This link provides an example of how to build a list in a loop.
 https://www.jeffgeerling.com/blog/2017/adding-strings-array-ansible
 
