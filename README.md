@@ -139,7 +139,7 @@ The value of var5 is “one for the money”.
 You can split strings with a delimiter.
 ```
 string: “this is a string”
-{{ string.split }}			# yields “this”, “is”, “a”, “string”
+{{ string.split }}		# yields “this”, “is”, “a”, “string”
 ```
 will split on the spaces by default and yield “this”, “is”, “a”, “string”.
 ```
