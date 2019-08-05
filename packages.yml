@@ -8,6 +8,7 @@
 
     # dictionary of packages by server type
     pkg_specs:
+      general: []
       web: [
         pkga,
         pkgb,
