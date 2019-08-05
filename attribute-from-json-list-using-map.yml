@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+  vars:
+
+    vms_list: [
+      { name: "vm1", os: "redhat7", fs: "general",   size: "vm_small" },
+      { name: "vm2", os: "redhat7", fs: "web",       size: "vm_small" },
+      { name: "vm3", os: "redhat7", fs: "oracle",    size: "vm_large" }
+    ]
+
+  tasks:
+
+    # extract the values of a single attribute from each JSON list
+    - debug:
+        msg: VM “{{ vms_list | map(attribute=‘name’) }}"

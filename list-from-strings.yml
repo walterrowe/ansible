@@ -1,4 +1,7 @@
 ---
+- hosts: localhost
+  gather_facts: no
+
 - name: Initialize an empty list for our strings
   set_fact:
     my_strings: []
