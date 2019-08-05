@@ -4,8 +4,6 @@
 
   vars:
 
-    profile: redhat
-
     vms_list: [
       { name: "vm1", os: "redhat7", fs: "general",   size: "vm_small" },
       { name: "vm2", os: "redhat7", fs: "web",       size: "vm_small" },
@@ -19,6 +17,12 @@
     ]
 
   tasks:
+
+    # imagine we have looped through creating VMs using vmware_guest and "registered" the
+    # facts after each one to make a list that we then use to make a list of mac addresses,
+    # then we want to register each of those mac addresses with infblox using the name from
+    # the vms_list list.
+
     - debug:
         msg: VM “{{ item.0.name }}" has MAC address is “{{ item.1 }}”
       with_together:
