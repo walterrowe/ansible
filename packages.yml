@@ -27,6 +27,10 @@
 
   tasks:
 
+    - name: installing these packages
+      debug:
+        var: pkg_specs[srv_profile]
+
     # https://docs.ansible.com/ansible/latest/modules/yum_module.html
     - name: Install packages according to server profile “{{ srv_profile }}”
       yum:
