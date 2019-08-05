@@ -29,8 +29,14 @@
 
     # https://docs.ansible.com/ansible/latest/modules/yum_module.html
     - name: Install packages according to server profile “{{ srv_profile }}”
-      debug:
-        msg: installing "{{ pkg_specs[srv_profile] }}”
-#     yum:
-#       name: “{{ pkg_specs[srv_profile] }}”
-#       state: present
+      yum:
+        name: “{{ pkg_specs[srv_profile] }}”
+        state: present
+      when: ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat"
+
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    - name: Install packages according to server profile “{{ srv_profile }}”
+      apt:
+        name: “{{ pkg_specs[srv_profile] }}”
+        state: present
+      when: ansible_facts['distribution'] == "Debian" or ansible_facts['distribution'] == "Ubuntu"
