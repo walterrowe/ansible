@@ -123,6 +123,30 @@ with_together:
   - “{{ vms_list }}”
   - “{{ mac_addr }}”
 ```
+
+This example demonstrates how to start with an empty list and append strings to it as list items. Taken from https://blog.crisp.se/2016/10/20/maxwenzin/how-to-append-to-lists-in-ansible
+
+```- name: Initialize an empty list for our strings
+  set_fact:
+    my_strings: []
+
+- name: Setup a string variable
+  set_fact:
+    my_name: "Max"
+
+- name: Append string to list
+  set_fact:
+    my_strings: "{{ my_strings + [ my_name ] }}"
+
+- debug: var=my_strings
+
+- name: Append another item to the list
+  set_fact:
+    my_strings: "{{ my_strings + [ 'Power' ] }}"
+
+- debug: var=my_strings
+```
+
 ### String and Variable Operations
 
 Strings in Ansible are strings in Python which are lists of characters. Lists can be concatenated using the “+” operating.
