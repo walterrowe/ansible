@@ -26,13 +26,12 @@
     ]
 
   tasks:
-#   - debug:
-#       msg: VM “{{ item.0.name }}" has MAC address is “{{ item.1 }}”
-#     with_together:
-#       - "{{ vms_list }}"
-#       - "{{ mac_addr }}"
+    - debug:
+        msg: VM “{{ item.0.name }}" has MAC address is “{{ item.1 }}”
+      with_together:
+        - "{{ vms_list }}"
+        - "{{ mac_addr }}"
 
-    - name: process JSON list
-      debug:
+    - debug:
         msg: VM “{{ item.name }}"
-      loop: ”{{ vms_test[profile] }}”
+      loop: "{{ vms_test[profile] }}"
