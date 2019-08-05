@@ -10,7 +10,7 @@
     vol_specs:
       general: []
       web: [
-          { mount: “sites”, pdevs: “sdb” }
+          { mount: “sites”,    pdevs: “sdb” }
         ]
       oracle: [
           { mount: “apps”,     pdevs: “sdb” },
@@ -29,5 +29,5 @@
 
     - name: paths
       debug:
-        msg: “{{ ‘/dev/vg_’+item.mount+’/lv_’+item.mount }}”
-      loop: ”{{ vol_specs[srv_profile] }}”
+        msg: “{{ "/dev/vg_" + item.mount + "/lv_" + item.mount }}”
+      loop: "{{ vol_specs[srv_profile] }}"
