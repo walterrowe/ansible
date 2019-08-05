@@ -171,6 +171,8 @@ https://www.jeffgeerling.com/blog/2017/adding-strings-array-ansible
 
 ### Useful conditionals
 
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html
+
 when: (ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat")
 when: (ansible_facts['distribution'] == "Debian" or ansible_facts['distribution'] == "Ubuntu")
 when: (ansible_facts['os_family'] == "RedHat" or ansible_facts['os_family'] == "Debian")
