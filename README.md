@@ -126,7 +126,8 @@ with_together:
 
 This example demonstrates how to start with an empty list and append strings to it as list items. Taken from https://blog.crisp.se/2016/10/20/maxwenzin/how-to-append-to-lists-in-ansible
 
-```- name: Initialize an empty list for our strings
+```
+- name: Initialize an empty list for our strings
   set_fact:
     my_strings: []
 
