@@ -10,19 +10,19 @@
     vol_specs:
       general: []
       web: [
-          { mount: “sites”,    pdevs: “sdb” }
+          { mount: sites,    pdevs: sdb }
         ]
       oracle: [
-          { mount: “apps”,     pdevs: “sdb” },
-          { mount: “scratch”,  pdevs: “sdc” },
-          { mount: “oradata”,  pdevs: “sdd” },
-          { mount: “orafra”,   pdevs: “sde” }
+          { mount: apps,     pdevs: sdb },
+          { mount: scratch,  pdevs: sdc },
+          { mount: oradata,  pdevs: sdd },
+          { mount: orafra,   pdevs: sde }
         ]
       mysql: [
-          { mount: “apps”,     pdevs: “sdb” },
-          { mount: “scratch”,  pdevs: “sdc” },
-          { mount: “mydata”,   pdevs: “sdd” },
-          { mount: “mybackup”, pdevs: “sde” }
+          { mount: apps,     pdevs: sdb },
+          { mount: scratch,  pdevs: sdc },
+          { mount: mydata,   pdevs: sdd },
+          { mount: mybackup, pdevs: sde }
         ]
 
   tasks:
