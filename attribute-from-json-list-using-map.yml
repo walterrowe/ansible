@@ -14,7 +14,7 @@
 
     # extract the values of a single attribute from each JSON list
     - set_fact:
-        vm_names: "{{ vms_list | from_json | map(attribute='name') | list }}"
+        vm_names: "{{ vms_list | map(attribute='name') | list }}"
 
     - debug:
         var: vm_names
