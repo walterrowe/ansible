@@ -13,5 +13,8 @@
   tasks:
 
     # extract the values of a single attribute from each JSON list
+    - set_fact:
+        vm_names: "{{ vms_list | map(attribute=‘name’) }}"
+
     - debug:
-        msg: “VMs {{ vms_list | map(attribute=‘name’) }}"
+        var: vm_names
