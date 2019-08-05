@@ -14,4 +14,4 @@
 
     # extract the values of a single attribute from each JSON list
     - debug:
-        msg: VM “{{ vms_list | map(attribute=‘name’) }}"
+        msg: VM “{{ vms_list | map(attribute=‘name’) | list}}"
