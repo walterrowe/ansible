@@ -176,20 +176,20 @@ You can split strings with a delimiter and select a specific items from the resu
 address: 192.168.100.10
 {{ address.split('.')[0] }}	  # yields "192"
 {{ address.split('.')[2] }}	  # yields "100"
-{{ address.split('.')[-1] }}  	# yields "10"
+{{ address.split('.')[-1] }}  # yields "10"
 ```
 And you can use splitext to split a filename on dot to get the basename.
 ```
 filename: basename.iso
-{{ address | splitext }}	    # yields "basename"
+{{ address | splitext }}	      # yields "basename"
 ```
 You can extract a “substring” using list notation since strings are lists of characters. Remember that lists start with index 0. Substring extract would be specified by index of starting position, a colon, and the number of list items to extract.
 ```
 string: "onetwothree"
-{{ string[0:3] }}		# yields "one"
-{{ string[3:3] }}		# yields "two"
-{{ string[6:5] }}		# yields "three"
-{{ string[4:1] }}		# yields "w"
+{{ string[0:3] }}      # yields "one"
+{{ string[3:3] }}      # yields "two"
+{{ string[6:5] }}      # yields "three"
+{{ string[4:1] }}      # yields "w"
 ```
 This link provides an example of how to build a list in a loop.
 https://www.jeffgeerling.com/blog/2017/adding-strings-array-ansible
