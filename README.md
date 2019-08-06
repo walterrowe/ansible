@@ -86,7 +86,7 @@ fs_specs:
     { size_tb:  1, type: thin, datastore: somewhere } 	# /data
   ]
   web: [
-    { size_gb: 60, type: thin, datastore: somewhere }, 	# /
+    { size_gb:  60, type: thin, datastore: somewhere }, 	# /
     { size_gb: 100, type: thin, datastore: somewhere } 	# /sites
   ]
   mssql: [
