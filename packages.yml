@@ -3,7 +3,7 @@
 
   vars:
 
-    # default to type “web” server
+    # default to type "web" server
     srv_profile: web
 
     # dictionary of packages by server type
@@ -32,15 +32,15 @@
         var: pkg_specs[srv_profile]
 
     # https://docs.ansible.com/ansible/latest/modules/yum_module.html
-    - name: Install packages according to server profile “{{ srv_profile }}”
+    - name: Install packages according to server profile "{{ srv_profile }}"
       yum:
-        name: “{{ pkg_specs[srv_profile] }}”
+        name: "{{ pkg_specs[srv_profile] }}"
         state: present
       when: ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat"
 
     # https://docs.ansible.com/ansible/latest/modules/apt_module.html
-    - name: Install packages according to server profile “{{ srv_profile }}”
+    - name: Install packages according to server profile "{{ srv_profile }}"
       apt:
-        name: “{{ pkg_specs[srv_profile] }}”
+        name: "{{ pkg_specs[srv_profile] }}"
         state: present
       when: ansible_facts['distribution'] == "Debian" or ansible_facts['distribution'] == "Ubuntu"

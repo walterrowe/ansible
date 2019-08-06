@@ -3,7 +3,7 @@
 
   vars:
 
-    # default to type “web” server
+    # default to type "web" server
     srv_profile: web
 
     # dictionary of logical volumes by server type
@@ -29,5 +29,5 @@
 
     - name: paths
       debug:
-        msg: “{{ "/dev/vg_" + item.mount + "/lv_" + item.mount }}”
+        msg: "{{ "/dev/vg_" + item.mount + "/lv_" + item.mount }}"
       loop: "{{ vol_specs[srv_profile] }}"

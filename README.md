@@ -99,7 +99,7 @@ fs_specs:
     { size_gb: 100, type: thin, datastore: somewhere }   # I:
   ]
 ```
-You can loop through two lists in parallel using “with_together”.
+You can loop through two lists in parallel using "with_together".
 ```
 vms_list:[
   { name: vm1, os: redhat7, fs: general, size: vm_small },
@@ -152,7 +152,7 @@ This example demonstrates how to start with an empty list and append strings to 
 
 ### String and Variable Operations
 
-Strings in Ansible are strings in Python which are lists of characters. Lists can be concatenated using the “+” operating.
+Strings in Ansible are strings in Python which are lists of characters. Lists can be concatenated using the "+" operating.
 ```
 var1: "one"
 var2: "two"
@@ -160,15 +160,15 @@ var3: "three"
 var4: "{{ var1 + var2 + var3 }}"
 var5: "{{ var1 + ' for the money' }}"
 ```
-The value of var4 is “onetwothree”.
-The value of var5 is “one for the money”.
+The value of var4 is "onetwothree".
+The value of var5 is "one for the money".
 
 You can split strings with a delimiter.
 ```
 string: "this is a string"
 {{ string.split }}            # yields "this", "is", "a", "string"
 ```
-will split on the spaces by default and yield “this”, “is”, “a”, “string”.
+will split on the spaces by default and yield "this", "is", "a", "string".
 ```
 address: 192.168.100.10
 {{ address.split('.') }}      # yields "192", "160", "100", "10"
@@ -185,7 +185,7 @@ And you can use splitext to split a filename on dot to get the basename.
 filename: basename.iso
 {{ address | splitext }}	      # yields "basename"
 ```
-You can extract a “substring” using list notation since strings are lists of characters. Remember that lists start with index 0. Substring extract would be specified by index of starting position, a colon, and the number of list items to extract.
+You can extract a "substring" using list notation since strings are lists of characters. Remember that lists start with index 0. Substring extract would be specified by index of starting position, a colon, and the number of list items to extract.
 ```
 string: "onetwothree"
 {{ string[0:3] }}      # yields "one"
