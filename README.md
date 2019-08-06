@@ -73,30 +73,30 @@ os_specs:
 fs_profile: general
 fs_specs:
   general: [
-    { size_gb: 60, type: thin, datastore: somewhere }	# /
+    { size_gb:  60, type: thin, datastore: somewhere }   # /
   ]
   oracle: [
-    { size_gb: 60, type: thin, datastore: somewhere }, 	# /
-    { size_tb:  1, type: thin, datastore: somewhere }, 	# /apps
-    { size_tb:  1, type: thin, datastore: somewhere } 	# /data
+    { size_gb:  60, type: thin, datastore: somewhere },  # /
+    { size_tb:   1, type: thin, datastore: somewhere },  # /apps
+    { size_tb:   1, type: thin, datastore: somewhere }   # /data
   ]
   mysql: [
-    { size_gb: 60, type: thin, datastore: somewhere }, 	# /
-    { size_tb:  1, type: thin, datastore: somewhere }, 	# /apps
-    { size_tb:  1, type: thin, datastore: somewhere } 	# /data
+    { size_gb:  60, type: thin, datastore: somewhere },  # /
+    { size_tb:   1, type: thin, datastore: somewhere },  # /apps
+    { size_tb:   1, type: thin, datastore: somewhere }   # /data
   ]
   web: [
-    { size_gb:  60, type: thin, datastore: somewhere }, 	# /
-    { size_gb: 100, type: thin, datastore: somewhere } 	# /sites
+    { size_gb:  60, type: thin, datastore: somewhere },  # /
+    { size_gb: 100, type: thin, datastore: somewhere }   # /sites
   ]
   mssql: [
-    { size_gb:  60, type: thin, datastore: somewhere }, # C:
-    { size_gb: 100, type: thin, datastore: somewhere }, # D:
-    { size_gb: 100, type: thin, datastore: somewhere }, # E:
-    { size_gb: 100, type: thin, datastore: somewhere }, # F:
-    { size_gb: 100, type: thin, datastore: somewhere }, # G:
-    { size_gb: 100, type: thin, datastore: somewhere }, # H:
-    { size_gb: 100, type: thin, datastore: somewhere }  # I:
+    { size_gb:  60, type: thin, datastore: somewhere },  # C:
+    { size_gb: 100, type: thin, datastore: somewhere },  # D:
+    { size_gb: 100, type: thin, datastore: somewhere },  # E:
+    { size_gb: 100, type: thin, datastore: somewhere },  # F:
+    { size_gb: 100, type: thin, datastore: somewhere },  # G:
+    { size_gb: 100, type: thin, datastore: somewhere },  # H:
+    { size_gb: 100, type: thin, datastore: somewhere }   # I:
   ]
 ```
 You can loop through two lists in parallel using “with_together”.
