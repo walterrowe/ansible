@@ -206,3 +206,6 @@ when: (ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution
 ### Useful References and Examples
 
 Read about Python strings to learn more about Ansible strings.
+
+Read the Ansible Variables doc for more info on variable references.
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html
