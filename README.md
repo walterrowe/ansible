@@ -174,8 +174,8 @@ address: 192.168.100.10
 You can split strings with a delimiter and select a specific items from the resulting list.
 ```
 address: 192.168.100.10
-{{ address.split('.')[0] }}	  # yields "192"
-{{ address.split('.')[2] }}	  # yields "100"
+{{ address.split('.')[0] }}   # yields "192"
+{{ address.split('.')[2] }}   # yields "100"
 {{ address.split('.')[-1] }}  # yields "10"
 ```
 And you can use splitext to split a filename on dot to get the basename.
