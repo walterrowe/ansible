@@ -16,7 +16,7 @@ This describes how to use the value of a variable as a key into a structured dic
 # vm_profile: vm_small
 # vm_specs[vm_profile ].cpu, .ram
 
-vm_profile: vm_small		# guaranteed default value
+vm_profile: vm_small     # guaranteed default value
 vm_specs:
   vm_small:
     cpu: 1
@@ -38,7 +38,7 @@ vm_specs:
 # os_profile: redhat7
 # os_specs[os_profile].guest,.scsi, .nic, .image
 
-os_profile: redhat7		# guaranteed default value
+os_profile: redhat7      # guaranteed default value
 os_specs:
   redhat7:
     guest: rhel7_64bit
@@ -65,8 +65,10 @@ os_specs:
 # fs_specs['web'    ]
 # fs_specs['mssql'  ]
 #
-# fs_profile: oracle
+# fs_profile: oracle       # guaranteed default value
 # fs_specs[fs_profile]
+#
+# this construct is useful for loops or passing JSON lists to modules
 
 fs_profile: general
 fs_specs:
