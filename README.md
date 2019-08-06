@@ -164,12 +164,12 @@ The value of var5 is “one for the money”.
 You can split strings with a delimiter.
 ```
 string: "this is a string"
-{{ string.split }}		# yields "this", "is", "a", "string"
+{{ string.split }}            # yields "this", "is", "a", "string"
 ```
 will split on the spaces by default and yield “this”, “is”, “a”, “string”.
 ```
 address: 192.168.100.10
-{{ address.split('.') }}	# yields "192", "160", "100", "10"
+{{ address.split('.') }}      # yields "192", "160", "100", "10"
 ```
 You can split strings with a delimiter and select a specific items from the resulting list.
 ```
