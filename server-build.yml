@@ -39,3 +39,13 @@
       debug:
         msg: "{{ item.mnt }} + ' ' + {{ item.dev }}"
       loop: "{{ vol_specs[fs_profile].vol }}"
+      when: fs_profile != "mssql"
+
+    - name: fs_profile facts
+      debug:
+        msg: "{{ item.letter }} + ' ' + {{ item.psize }} + ' ' + {{ item.pnum }} + ' ' + {{ item.dnum }}"
+      loop: "{{ vol_specs[fs_profile].vol }}"
+      when: fs_profile == "mssql"
+
+#     { letter: C, psize: -1, pnum: 1, dnum: 1 }, # C:
+
