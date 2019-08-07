@@ -1,0 +1,94 @@
+---
+# filesystems specifications
+# structured dictionary
+#
+# index into dictionary
+# fs_profile: oracle
+#
+# vmware_guest specs
+# esx_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
+# esx_specs[os_profile].guest, .scsi, .nic, .image
+
+vm_profile: vm_small
+os_profile: redhat
+
+esx_specs:
+  vm_small:  { cpu: 1, ram: 2  }
+  vm_medium: { cpu: 2, ram: 4  }
+  vm_large:  { cpu: 4, ram: 8  }
+  vm_xlarge: { cpu: 8, ram: 16 } 
+  redhat:  { guest: rhel7_64bit,         scsi: paravirtual, nic: vmxnet3, image: redhat7.iso   }
+  ubuntu:  { guest: ubuntu64bit,         scsi: paravirtual, nic: vmxnet3, image: ubuntu18.iso  }
+  windows: { guest: windows9server64bit, scsi: lsilogicsas, nic: e1000e,  image: windows16.iso }
+
+# filesystems specifications
+# structured dictionary of arrays of JSON lists
+#
+# index into dictionary
+# fs_profile: oracle
+#
+# lvol, filesystem, win_partition specs
+# loop: vol_specs[fs_profile] > item.vol {.mnt, .dev}
+#
+# win_partition specs
+# loop: vol_specs[fs_profile] > item.vol {.letter, .psize, .pnum, .dnum}
+#
+# vmware_guest_disk specs
+# vol_specs[fs_profile].dsk
+
+fs_profile: general
+vol_specs:
+  general:
+    # https://docs.ansible.com/ansible/latest/modules/lvol_module.html
+    # https://docs.ansible.com/ansible/latest/modules/filesystem_module.html
+    vol: []
+    dsk: []
+  oracle:
+    vol: [
+      { mnt: apps,    dev: sdb }, # /apps
+      { mnt: data,    dev: sdc }, # /data
+      { mnt: scratch, dev: sdd }  # /scratch
+    ]
+    dsk: [
+      { size_tb:  1, type: thin, datastore: somewhere }, # /apps
+      { size_tb:  1, type: thin, datastore: somewhere }, # /data
+      { size_tb:  1, type: thin, datastore: somewhere }  # /scratch
+    ]
+  mysql:
+    vol: [
+      { mnt: apps,    dev: sdb }, # /apps
+      { mnt: data,    dev: sdc }, # /data
+      { mnt: scratch, dev: sdd }  # /scratch
+    ]
+    dsk: [
+      { size_tb:  1, type: thin, datastore: somewhere }, # /apps
+      { size_tb:  1, type: thin, datastore: somewhere }, # /data
+      { size_tb:  1, type: thin, datastore: somewhere }  # /scratch
+    ]
+  mssql:
+    # https://docs.ansible.com/ansible/latest/modules/win_partition_module.html
+    vol: [
+      { letter: C, psize: -1, pnum: 1, dnum: 1 }, # C:
+      { letter: D, psize: -1, pnum: 1, dnum: 1 }, # D:
+      { letter: E, psize: -1, pnum: 1, dnum: 1 }, # E:
+      { letter: F, psize: -1, pnum: 1, dnum: 1 }, # F:
+      { letter: G, psize: -1, pnum: 1, dnum: 1 }, # G:
+      { letter: H, psize: -1, pnum: 1, dnum: 1 }, # H:
+      { letter: I, psize: -1, pnum: 1, dnum: 1 }  # I:
+    ]
+    dsk: [
+      { size_gb:  60, type: thin, datastore: somewhere }, # C:
+      { size_gb: 100, type: thin, datastore: somewhere }, # D:
+      { size_gb: 100, type: thin, datastore: somewhere }, # E:
+      { size_gb: 100, type: thin, datastore: somewhere }, # F:
+      { size_gb: 100, type: thin, datastore: somewhere }, # G:
+      { size_gb: 100, type: thin, datastore: somewhere }, # H:
+      { size_gb: 100, type: thin, datastore: somewhere }  # I:
+    ]
+  web:
+    vol: [
+      { mnt: sites,   dev: sdb }, # /apps
+    ]
+    dsk: [
+      { size_gb: 100, type: thin, datastore: somewhere }  # /sites
+    ]
