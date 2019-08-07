@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+  vars_files:
+    - server-specs.yml
+
+# esx_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
+# esx_specs[os_profile].guest, .scsi, .nic, .image
+
+  tasks:
+
+    - name: vm_profile facts
+      debug:
+        var: esx_specs[vm_profile].cpu
+
+    - name: vm_profile facts
+      debug:
+        var: esx_specs[vm_profile].ram
+
+    - name: os_profile facts
+      debug:
+        var: esx_specs[os_profile].guest
