@@ -47,5 +47,3 @@
       loop: "{{ vol_specs[fs_profile].vol }}"
       when: fs_profile == "mssql"
 
-#     { letter: C, psize: -1, pnum: 1, dnum: 1 }, # C:
-
