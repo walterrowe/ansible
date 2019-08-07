@@ -7,6 +7,15 @@
 
 # esx_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
 # esx_specs[os_profile].guest, .scsi, .nic, .image
+#
+# lvol, filesystem, win_partition specs
+# loop: vol_specs[fs_profile] > item.vol {.mnt, .dev}
+#
+# win_partition specs
+# loop: vol_specs[fs_profile] > item.vol {.letter, .psize, .pnum, .dnum}
+#
+# vmware_guest_disk specs
+# vol_specs[fs_profile].dsk
 
   tasks:
 
@@ -21,3 +30,12 @@
     - name: os_profile facts
       debug:
         var: esx_specs[os_profile].guest
+
+    - name: fs_profile facts
+      debug:
+        var: vol_specs[fs_profile].dsk
+
+    - name: fs_profile facts
+      debug:
+        msg: "{{ item.mnt }} + ' ' + {{ item.dev }}"
+      loop: "{{ vol_specs[fs_profile].vol }}"

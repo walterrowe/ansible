@@ -13,10 +13,14 @@ vm_profile: vm_small
 os_profile: redhat
 
 esx_specs:
+
+  # vm sizes for vmware resources
   vm_small:  { cpu: 1, ram: 2  }
   vm_medium: { cpu: 2, ram: 4  }
   vm_large:  { cpu: 4, ram: 8  }
   vm_xlarge: { cpu: 8, ram: 16 } 
+
+  # os specs for vmware drivers
   redhat:  { guest: rhel7_64bit,         scsi: paravirtual, nic: vmxnet3, image: redhat7.iso   }
   ubuntu:  { guest: ubuntu64bit,         scsi: paravirtual, nic: vmxnet3, image: ubuntu18.iso  }
   windows: { guest: windows9server64bit, scsi: lsilogicsas, nic: e1000e,  image: windows16.iso }
@@ -38,11 +42,13 @@ esx_specs:
 
 fs_profile: general
 vol_specs:
+
   general:
     # https://docs.ansible.com/ansible/latest/modules/lvol_module.html
     # https://docs.ansible.com/ansible/latest/modules/filesystem_module.html
     vol: []
     dsk: []
+
   oracle:
     vol: [
       { mnt: apps,    dev: sdb }, # /apps
@@ -54,6 +60,7 @@ vol_specs:
       { size_tb:  1, type: thin, datastore: somewhere }, # /data
       { size_tb:  1, type: thin, datastore: somewhere }  # /scratch
     ]
+
   mysql:
     vol: [
       { mnt: apps,    dev: sdb }, # /apps
@@ -65,6 +72,7 @@ vol_specs:
       { size_tb:  1, type: thin, datastore: somewhere }, # /data
       { size_tb:  1, type: thin, datastore: somewhere }  # /scratch
     ]
+
   mssql:
     # https://docs.ansible.com/ansible/latest/modules/win_partition_module.html
     vol: [
@@ -85,6 +93,7 @@ vol_specs:
       { size_gb: 100, type: thin, datastore: somewhere }, # H:
       { size_gb: 100, type: thin, datastore: somewhere }  # I:
     ]
+
   web:
     vol: [
       { mnt: sites,   dev: sdb }, # /apps
