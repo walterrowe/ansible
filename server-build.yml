@@ -19,11 +19,14 @@
 
   tasks:
 
+    - set_fact:
+        profile: "{{ [ vm_profile ] }}"
+
     # make sure we have a valid vm_profile
     - name: validate vm_profile
       debug:
-        msg: vm_profile "{{ vm_profile }}" is invalid
-      when: vm_profile is not subset(vm_profiles)
+        var: vm_profile
+      when: profile is not subset(vm_profiles)
 
     # make sure we have a valid os_profile
     - name: validate os_profile
