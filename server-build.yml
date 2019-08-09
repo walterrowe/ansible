@@ -32,13 +32,13 @@
     - name: validate os_profile
       debug:
         msg: os_profile "{{ os_profile }}" is invalid
-      when: os_profile is not subset(os_profiles)
+      when: [ os_profile ] is not subset(os_profiles)
 
     # make sure we have a valid fs_profile
     - name: validate fs_profile
       debug:
         msg: fs_profile "{{ fs_profile }}" is invalid
-      when: fs_profile is not subset(fs_profiles)
+      when: [ fs_profile ] is not subset(fs_profiles)
 
     - name: vm_profile facts
       debug:
