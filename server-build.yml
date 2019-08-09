@@ -19,17 +19,32 @@
 
   tasks:
 
-    - name: vm_profile facts
-      debug:
-        var: esx_specs[vm_profile].cpu
+    # make sure we have a valid vm_profile
+    - name: validate vm_profile
+        msg: vm_profile "{{ vm_profile }}" is invalid
+      when: [ vm_profile ] is not subset (vm_profiles)
+
+    # make sure we have a valid os_profile
+    - name: validate os_profile
+        msg: os_profile "{{ os_profile }}" is invalid
+      when: [ os_profile ] is not subset (os_profiles)
+
+    # make sure we have a valid fs_profile
+    - name: validate fs_profile
+        msg: fs_profile "{{ fs_profile }}" is invalid
+      when: [ fs_profile ] is not subset (fs_profiles)
 
     - name: vm_profile facts
       debug:
-        var: esx_specs[vm_profile].ram
+        var: vm_specs[vm_profile].cpu
+
+    - name: vm_profile facts
+      debug:
+        var: vm_specs[vm_profile].ram
 
     - name: os_profile facts
       debug:
-        var: esx_specs[os_profile].guest
+        var: os_specs[os_profile].guest
 
     - name: fs_profile facts
       debug:
