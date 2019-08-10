@@ -25,7 +25,7 @@
       set_fact:
         profile: "{{ [ vm_size ] }}"
 
-    # make sure we have a valid vm_profile
+    # make sure we have a valid dictionary selector value
     - name: validate vm_size
       debug:
         var: vm_size
