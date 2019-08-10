@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  gather_facts: no
+  
+  vars:
+  
+    # dictionary selected variable
+    vm_size: vm_small
+
+    # dictionary of values to query
+    vm_spec:
+
+      # vm sizes for vmware resources
+      vm_small:  { cpu: 1, ram: 2  }
+      vm_medium: { cpu: 2, ram: 4  }
+      vm_large:  { cpu: 4, ram: 8  }
+      vm_xlarge: { cpu: 8, ram: 16 }
+
+    # dynamic list of valid values for dictionary selector
+    vm_vals: "{{ vm_specs | flatten(levels=1) }}"
+
+  tasks:
+    
+    - name: turn vm_size into list required by subset()
+      set_fact:
+        profile: "{{ [ vm_size ] }}"
+
+    # make sure we have a valid vm_profile
+    - name: validate vm_size
+      debug:
+        var: vm_size
+      when: profile is not subset(vm_vals)
