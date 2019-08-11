@@ -2,6 +2,29 @@
 
 Python expressions are valid in YAML playbook variable evaluations.
 
+### Creating Forks and Syncing with Upstream Sources
+
+[Configuring A Fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork)
+
+```
+# clone my fork to local and list remotes
+$ git clone https://github.com/MY_ACCOUNT/MY_REPOSITORY.git
+$ git remote -v
+
+# add new remote pointing to upstream source of my fork and list remotes
+$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+$ git remote -v
+```
+
+[Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork)
+
+```
+$ git fetch upstream                    # fetch upstream to local
+$ git checkout master                   # checkout my master branch
+$ git merge upstream/master             # merge upstream into my fork
+$ git push                              # push to my fork on github
+```
+
 ### Accessing Structured Data via Variable
 
 This describes how to use the value of a variable as a key into a structured dictionary to extract values. The concept would be that the variable’s value would be passed into the playbook at run time. In Ansible Tower / AWX, a multiple choice survey can restrict selection to known values.
