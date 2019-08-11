@@ -2,7 +2,7 @@
 
 Python expressions are valid in YAML playbook variable evaluations.
 
-### Creating Forks and Syncing with Upstream Sources
+### Forking Git Repos and Syncing with the Upstream Repo
 
 [Configuring A Fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork)
 
