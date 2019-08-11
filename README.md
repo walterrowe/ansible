@@ -53,58 +53,6 @@ vm_specs:
     ram: 8
 ```
 
-You can loop through two lists in parallel using "with_together". See [with_together.yml](https://github.com/walterrowe/ansible/blob/master/with_together.yml).
-
-```
-vms_list:[
-  { name: vm1, os: redhat7, fs: general, size: vm_small },
-  { name: vm2, os: redhat7, fs: web.   , size: vm_small },
-  { name: vm3, os: redhat7, fs: oracle , size: vm_large }
-]
-
-mac_addr: [
-  "00:00:00:00:00:00",
-  "00:00:00:00:00:00",
-  "00:00:00:00:00:00"
-]
-
-# 'with_together' syncs two lists into a common list
-# [ (a,b) (1,2) ] becomes [ (a,1) (b,2) ]
-# item.0 is first item in resulting list (even a list itself)
-# item.1 is second item in resulting list (even a list itself)
-#
-# loop to display vm names, mac addresses
-debug:
-  msg: VM "{{ item.0.name }}" has MAC address is "{{ item.1 }}"
-with_together:
-  - "{{ vms_list }}"
-  - "{{ mac_addr }}"
-```
-
-This example demonstrates how to start with an empty list and append strings to it as list items. Taken from "[How to append to lists in Ansible](https://blog.crisp.se/2016/10/20/maxwenzin/how-to-append-to-lists-in-ansible)".
-
-```
-- name: Initialize an empty list for our strings
-  set_fact:
-    my_strings: []
-
-- name: Setup a string variable
-  set_fact:
-    my_name: "Max"
-
-- name: Append string to list
-  set_fact:
-    my_strings: "{{ my_strings + [ my_name ] }}"
-
-- debug: var=my_strings
-
-- name: Append another item to the list
-  set_fact:
-    my_strings: "{{ my_strings + [ 'Power' ] }}"
-
-- debug: var=my_strings
-```
-
 ### String and Variable Operations
 
 Strings in Ansible are strings in Python which are lists of characters. Lists can be concatenated using the "+" operating.
@@ -160,6 +108,8 @@ string: "onetwothree"
 {{ string[4:1] }}      # yields "w"
 ```
 
+### Creating and Comparing Lists
+
 This article [Adding strings to an array in Ansible](https://www.jeffgeerling.com/blog/2017/adding-strings-array-ansible) provides an example of how to build a list in a loop.
 
 ```
@@ -188,6 +138,34 @@ This article [Adding strings to an array in Ansible](https://www.jeffgeerling.co
         my_strings: "{{ my_strings + [ 'Power' ] }}"
 
     - debug: var=my_strings
+```
+
+You can loop through two lists in parallel using "with_together". See [with_together.yml](https://github.com/walterrowe/ansible/blob/master/with_together.yml).
+
+```
+vms_list:[
+  { name: vm1, os: redhat7, fs: general, size: vm_small },
+  { name: vm2, os: redhat7, fs: web.   , size: vm_small },
+  { name: vm3, os: redhat7, fs: oracle , size: vm_large }
+]
+
+mac_addr: [
+  "00:00:00:00:00:00",
+  "00:00:00:00:00:00",
+  "00:00:00:00:00:00"
+]
+
+# 'with_together' syncs two lists into a common list
+# [ (a,b) (1,2) ] becomes [ (a,1) (b,2) ]
+# item.0 is first item in resulting list (even a list itself)
+# item.1 is second item in resulting list (even a list itself)
+#
+# loop to display vm names, mac addresses
+debug:
+  msg: VM "{{ item.0.name }}" has MAC address is "{{ item.1 }}"
+with_together:
+  - "{{ vms_list }}"
+  - "{{ mac_addr }}"
 ```
 
 ### Useful conditionals
