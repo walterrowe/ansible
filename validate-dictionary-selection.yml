@@ -28,5 +28,5 @@
     # make sure we have a valid dictionary selector value
     - name: validate vm_size
       fail:
-        var: vm_size
+        msg: Invalid size {{ vm_size }}
       when: profile is not subset(vm_vals)
