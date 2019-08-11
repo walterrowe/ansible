@@ -1,4 +1,4 @@
-# Ansible Tricks
+# Git and Ansible Tips & Tricks
 
 Python expressions are valid in YAML playbook variable evaluations.
 
@@ -27,7 +27,7 @@ $ git push                              # push to my fork on github
 
 ### Accessing Structured Data via Variable
 
-This describes how to use the value of a variable as a key into a structured dictionary to extract values. The concept would be that the variable’s value would be passed into the playbook at run time. In Ansible Tower / AWX, a multiple choice survey can restrict selection to known values.
+This describes how to use the value of a variable as a key into a structured dictionary to extract values. The concept would be that the variable’s value would be passed into the playbook at run time. In Ansible Tower / AWX, a multiple choice survey can restrict selection to known values. For a more detailed example look at [server-specs.yml](https://github.com/walterrowe/ansible/blob/master/server-specs.yml)
 
 ```
 # virtual machine resource profiles
@@ -51,80 +51,9 @@ vm_specs:
   vm_large:
     cpu: 4
     ram: 8
-
-# operating system specific specifications
-# structured data complex dictionary
-#
-# os_specs['redhat7'].guest, .scsi, .nic, .image
-# os_specs['ubuntu' ].guest, .scsi, .nic, .image
-# os_specs['windows'].guest, .scsi, .nic, .image
-#
-# os_profile: redhat7
-# os_specs[os_profile].guest,.scsi, .nic, .image
-
-os_profile: redhat7      # guaranteed default value
-os_specs:
-  redhat7:
-    guest: rhel7_64bit
-    scsi: paravirtual
-    nic: vmxnet3
-    image: redhat7.iso
-  ubuntu:
-    guest: ubuntu64bit
-    scsi: paravirtual
-    nic: vmxnet3
-    image: ubuntu18.iso
-  windows:
-    guest_id: windows9server64bit
-    scsi: lsilogicsas
-    nic: e1000e
-    image: windows16.iso
-
-# filesystems specifications
-# structured dictionary of JSON lists
-#
-# fs_specs['general']
-# fs_specs['oracle' ]
-# fs_specs['mysql'  ]
-# fs_specs['web'    ]
-# fs_specs['mssql'  ]
-#
-# fs_profile: oracle       # guaranteed default value
-# fs_specs[fs_profile]
-#
-# this construct is useful for loops or passing JSON lists to modules
-
-fs_profile: general
-fs_specs:
-  general: [
-    { size_gb:  60, type: thin, datastore: somewhere }   # /
-  ]
-  oracle: [
-    { size_gb:  60, type: thin, datastore: somewhere },  # /
-    { size_tb:   1, type: thin, datastore: somewhere },  # /apps
-    { size_tb:   1, type: thin, datastore: somewhere }   # /data
-  ]
-  mysql: [
-    { size_gb:  60, type: thin, datastore: somewhere },  # /
-    { size_tb:   1, type: thin, datastore: somewhere },  # /apps
-    { size_tb:   1, type: thin, datastore: somewhere }   # /data
-  ]
-  web: [
-    { size_gb:  60, type: thin, datastore: somewhere },  # /
-    { size_gb: 100, type: thin, datastore: somewhere }   # /sites
-  ]
-  mssql: [
-    { size_gb:  60, type: thin, datastore: somewhere },  # C:
-    { size_gb: 100, type: thin, datastore: somewhere },  # D:
-    { size_gb: 100, type: thin, datastore: somewhere },  # E:
-    { size_gb: 100, type: thin, datastore: somewhere },  # F:
-    { size_gb: 100, type: thin, datastore: somewhere },  # G:
-    { size_gb: 100, type: thin, datastore: somewhere },  # H:
-    { size_gb: 100, type: thin, datastore: somewhere }   # I:
-  ]
 ```
 
-You can loop through two lists in parallel using "with_together".
+You can loop through two lists in parallel using "with_together". See [with_together.yml](https://github.com/walterrowe/ansible/blob/master/with_together.yml).
 
 ```
 vms_list:[
@@ -152,7 +81,7 @@ with_together:
   - "{{ mac_addr }}"
 ```
 
-This example demonstrates how to start with an empty list and append strings to it as list items. Taken from https://blog.crisp.se/2016/10/20/maxwenzin/how-to-append-to-lists-in-ansible
+This example demonstrates how to start with an empty list and append strings to it as list items. Taken from "[How to append to lists in Ansible](https://blog.crisp.se/2016/10/20/maxwenzin/how-to-append-to-lists-in-ansible)".
 
 ```
 - name: Initialize an empty list for our strings
@@ -231,12 +160,39 @@ string: "onetwothree"
 {{ string[4:1] }}      # yields "w"
 ```
 
-This link provides an example of how to build a list in a loop.
-https://www.jeffgeerling.com/blog/2017/adding-strings-array-ansible
+This article [Adding strings to an array in Ansible](https://www.jeffgeerling.com/blog/2017/adding-strings-array-ansible) provides an example of how to build a list in a loop.
+
+```
+---
+- hosts: localhost
+  gather_facts: no
+
+  tasks:
+  
+    - name: Initialize an empty list for our strings
+      set_fact:
+        my_strings: []
+
+    - name: Setup a string variable
+      set_fact:
+        my_name: "Max"
+
+    - name: Append string to list
+      set_fact:
+        my_strings: "{{ my_strings + [ my_name ] }}"
+
+    - debug: var=my_strings
+
+    - name: Append another item to the list
+      set_fact:
+        my_strings: "{{ my_strings + [ 'Power' ] }}"
+
+    - debug: var=my_strings
+```
 
 ### Useful conditionals
 
-https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html
+Taken from Ansible Docs [Playbooks Conditionals](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html).
 
 ```
 when: (ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat")
@@ -249,5 +205,4 @@ when: (ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution
 
 Read about Python strings to learn more about Ansible strings.
 
-Read the Ansible Variables doc for more info on variable references.
-https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html
+Read the [Ansible Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html) doc for more info on variable references.
