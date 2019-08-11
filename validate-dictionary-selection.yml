@@ -17,7 +17,7 @@
       vm_xlarge: { cpu: 8, ram: 16 }
 
     # dynamic list of valid values for dictionary selector
-    vm_vals: "{{ vm_specs | flatten(levels=1) }}"
+    vm_vals: "{{ vm_spec | flatten(levels=1) }}"
 
   tasks:
     
