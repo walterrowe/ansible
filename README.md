@@ -41,11 +41,11 @@ This describes how to use the value of a variable as a key into a structured dic
 # vm_specs['vm_medium'].cpu, .ram
 # vm_specs['vm_large' ].cpu, .ram
 #
-# vm_profile: vm_small
-# vm_specs[vm_profile ].cpu, .ram
+# vm_size vm_small
+# vm_spec[vm_size].cpu, .ram
 
-vm_profile: vm_small     # guaranteed default value
-vm_specs:
+vm_size: vm_small     # guaranteed default value
+vm_spec:
   vm_small:
     cpu: 1
     ram: 2
@@ -55,6 +55,9 @@ vm_specs:
   vm_large:
     cpu: 4
     ram: 8
+
+# list of valid selectors for vm_spec dictionary
+vm_vals: "{{ vm_spec | flatten(levels=1) }}"
 ```
 
 ### String and Variable Operations
