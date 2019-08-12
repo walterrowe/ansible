@@ -6,13 +6,19 @@ Python expressions are valid in YAML playbook variable evaluations.
 
 [Configuring A Fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork)
 
-```
-# clone my fork to local and list remotes
-$ git clone https://github.com/MY_ACCOUNT/MY_REPOSITORY.git
-$ git remote -v
+Clone my fork to local and list remotes
 
-# add new remote pointing to upstream source of my fork and list remotes
-$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+
+```
+$ git clone {git-server}/MY_ACCOUNT/MY_REPOSITORY.git
+$ git remote -v
+```
+
+Add new remote pointing to upstream source of my fork and list remotes
+
+
+```
+$ git remote add upstream {git-server}/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 $ git remote -v
 ```
 
