@@ -8,14 +8,12 @@ Python expressions are valid in YAML playbook variable evaluations.
 
 Clone my fork to local and list remotes
 
-
 ```
 $ git clone {git-server}/MY_ACCOUNT/MY_REPOSITORY.git
 $ git remote -v
 ```
 
-Add new remote pointing to upstream source of my fork and list remotes
-
+Add a new remote pointing to upstream source of my fork, then list remotes.
 
 ```
 $ git remote add upstream {git-server}/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
