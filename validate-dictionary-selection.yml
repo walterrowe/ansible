@@ -30,3 +30,7 @@
       fail:
         msg: Invalid vm_size size {{ vm_size }}
       when: profile is not subset(vm_vals)
+
+    - name: show value of vm_size
+      debug:
+        msg: The {{ vm_size }} VM will have {{ vm_spec[vm_size].cpu}} CPU and {{ vm_spec[vm_size].ram * 1024 }} GB RAM

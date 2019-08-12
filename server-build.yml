@@ -5,17 +5,19 @@
   vars_files:
     - server-specs.yml
 
-# esx_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
-# esx_specs[os_profile].guest, .scsi, .nic, .image
-#
-# lvol, filesystem, win_partition specs
-# loop: fs_specs[fs_profile] > item.vol {.mnt, .dev}
-#
-# win_partition specs
-# loop: fs_specs[fs_profile] > item.vol {.letter, .psize, .pnum, .dnum}
-#
-# vmware_guest_disk specs
-# fs_specs[fs_profile].dsk
+  # From server-specs.yml
+  #
+  # esx_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
+  # esx_specs[os_profile].guest, .scsi, .nic, .image
+  #
+  # lvol, filesystem, win_partition specs
+  # loop: fs_specs[fs_profile] > item.vol {.mnt, .dev}
+  #
+  # win_partition specs
+  # loop: fs_specs[fs_profile] > item.vol {.letter, .psize, .pnum, .dnum}
+  #
+  # vmware_guest_disk specs
+  # fs_specs[fs_profile].dsk
 
   tasks:
 
