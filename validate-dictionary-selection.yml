@@ -33,4 +33,4 @@
 
     - name: show value of vm_size
       debug:
-        msg: The {{ vm_size }} VM will have {{ vm_spec[vm_size].cpu}} CPU and {{ vm_spec[vm_size].ram * 1024 }} GB RAM
+        msg: The {{ vm_size }} VM will have {{ vm_spec[vm_size].cpu}} CPU and {{ vm_spec[vm_size].ram }} GB RAM
