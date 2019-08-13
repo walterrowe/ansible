@@ -4,7 +4,7 @@ Python expressions are valid in YAML playbook variable evaluations.
 
 ### Forking Git Repos and Syncing with the Upstream Repo
 
-[Configuring A Fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork)
+[Configuring A Fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork) describes how to add the upstream parent remote to my local fork.
 
 Clone my fork to local and list remotes
 
@@ -20,7 +20,7 @@ $ git remote add upstream {git-server}/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 $ git remote -v
 ```
 
-[Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork)
+[Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork) describes how to sync upstream commits into my fork.
 
 ```
 $ git fetch upstream                    # fetch upstream to local
