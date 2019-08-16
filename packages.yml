@@ -31,16 +31,9 @@
       debug:
         var: pkg_specs[srv_profile]
 
-    # https://docs.ansible.com/ansible/latest/modules/yum_module.html
+    # https://docs.ansible.com/ansible/latest/modules/package_module.html
+    # package module evaluates client OS and calls appropriate apt or yum module
     - name: Install packages according to server profile "{{ srv_profile }}"
-      yum:
+      package:
         name: "{{ pkg_specs[srv_profile] }}"
         state: present
-      when: ansible_facts['distribution'] == "CentOS" or ansible_facts['distribution'] == "RedHat"
-
-    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
-    - name: Install packages according to server profile "{{ srv_profile }}"
-      apt:
-        name: "{{ pkg_specs[srv_profile] }}"
-        state: present
-      when: ansible_facts['distribution'] == "Debian" or ansible_facts['distribution'] == "Ubuntu"
