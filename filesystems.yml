@@ -36,3 +36,15 @@
       debug:
         msg: "{{ '/dev/' + item.pdevs }}"
       loop: "{{ vol_specs[srv_profile] }}"
+
+#   - name: "Display all ports from cluster1 as a string"
+#     debug:
+#       msg: "{{ domain_definition | json_query('domain.server[?cluster==`cluster1`].port') | join(', ') }}"
+
+    - name: Find apps in list
+      set_fact:
+        entry: "[ {{ vol_specs | json_query('oracle[?mount==`apps`]') | join(', ') }} ]"
+
+    - name: Display found entry
+      debug:
+        var: entry
