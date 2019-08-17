@@ -42,9 +42,11 @@
 #     debug:
 #       msg: "{{ domain_definition | json_query('domain.server[?cluster==`cluster1`].port') | join(', ') }}"
 
+#   $ ansible-playbook filesystems.yml -e srv_profile=oracle -e mount=oradata
     - name: Find apps in list
       set_fact:
-        entry: "[ {{ vol_specs | json_query('oracle[?mount==`apps`]') | join(', ') }} ]"
+#       entry: "[ {{ vol_specs | json_query('oracle[?mount==`apps`]') | join(', ') }} ]"
+        entry: "[ {{ vol_specs[srv_profile] | json_query('[?mount==`' + mount + '`]') | join(', ') }} ]"
 
     - name: Display found entry
       debug:
