@@ -37,6 +37,7 @@
         msg: "{{ '/dev/' + item.pdevs }}"
       loop: "{{ vol_specs[srv_profile] }}"
 
+#   https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#json-query-filter
 #   - name: "Display all ports from cluster1 as a string"
 #     debug:
 #       msg: "{{ domain_definition | json_query('domain.server[?cluster==`cluster1`].port') | join(', ') }}"
