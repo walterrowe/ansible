@@ -46,8 +46,7 @@
     - name: Find apps in list
       set_fact:
 #       entry: "[ {{ vol_specs | json_query('oracle[?mount==`apps`]') | join(', ') }} ]"
-#       entry: "[ {{ vol_specs[profile] | json_query('[?mount==`' + mountpt + '`]') | join(', ') }} ]"
-        entry: "[ {{ vol_specs | json_query('[].[?mount==`' + mountpt + '`]') | join(', ') }} ]"
+        entry: "[ {{ vol_specs[profile] | json_query('[?mount==`' + mountpt + '`]') | join(', ') }} ]"
 
     - name: Display found entry1
       debug:
