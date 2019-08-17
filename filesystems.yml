@@ -4,7 +4,7 @@
   vars:
 
     # default to type "web" server
-    srv_profile: web
+    profile: web
 
     # dictionary of logical volumes by server type
     vol_specs:
@@ -30,24 +30,29 @@
     - name: paths
       debug:
         msg: "{{ '/dev/vg_' + item.mount + '/lv_' + item.mount }}"
-      loop: "{{ vol_specs[srv_profile] }}"
+      loop: "{{ vol_specs[profile] }}"
 
     - name: volumes
       debug:
         msg: "{{ '/dev/' + item.pdevs }}"
-      loop: "{{ vol_specs[srv_profile] }}"
+      loop: "{{ vol_specs[profile] }}"
 
 #   https://docs.ansible.com/ansible/latest/user_guide/playbooks_filters.html#json-query-filter
 #   - name: "Display all ports from cluster1 as a string"
 #     debug:
 #       msg: "{{ domain_definition | json_query('domain.server[?cluster==`cluster1`].port') | join(', ') }}"
 
-#   $ ansible-playbook filesystems.yml -e srv_profile=oracle -e mount=oradata
+#   $ ansible-playbook filesystems.yml -e srv_profile=oracle -e mountpt=oradata
     - name: Find apps in list
       set_fact:
 #       entry: "[ {{ vol_specs | json_query('oracle[?mount==`apps`]') | join(', ') }} ]"
-        entry: "[ {{ vol_specs[srv_profile] | json_query('[?mount==`' + mount + '`]') | join(', ') }} ]"
+        entry1: "[ {{ vol_specs[profile] | json_query('[?mount==`' + mountpt + '`]') | join(', ') }} ]"
+        entry2: "[ {{ vol_specs.* | json_query('[?mount==`' + mountpt + '`]') | join(', ') }} ]"
 
-    - name: Display found entry
+    - name: Display found entry1
       debug:
-        var: entry
+        var: entry1
+
+    - name: Display found entry2
+      debug:
+        var: entry2
