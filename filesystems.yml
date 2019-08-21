@@ -28,6 +28,10 @@
 
   tasks:
 
+    - name: vol_specs keys
+      debug:
+        msg: keys for vol_specs are {{ vol_specs.keys() }}
+
     - name: paths
       debug:
         msg: "{{ '/dev/vg_' + item.mount + '/lv_' + item.mount }}"
