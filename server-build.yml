@@ -7,74 +7,74 @@
 
   # From server-specs.yml
   #
-  # vm_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
-  # os_specs[os_profile].guest, .scsi, .nic, .image
+  # vm_spec[vm_size].cpu, .ram (.ram must be '.ram * 1024')
+  # os_spec[os_type].guest, .scsi, .nic, .image
   #
   # lvol, filesystem, win_partition specs
-  # loop: fs_specs[fs_profile] > item.vol {.mnt, .dev}
+  # loop: fs_spec[fs_type] > item.vol {.mnt, .dev}
   #
   # win_partition specs
-  # loop: fs_specs[fs_profile] > item.vol {.letter, .psize, .pnum, .dnum}
+  # loop: fs_spec[fs_type] > item.vol {.letter, .psize, .pnum, .dnum}
   #
   # vmware_guest_disk specs
-  # fs_specs[fs_profile].dsk
+  # fs_spec[fs_type].dsk
 
   tasks:
 
-    - name: get vm_profile
+    - name: get vm_size
       set_fact:
-        profile: "{{ [ vm_profile ] }}"
+        profile: "{{ [ vm_size ] }}"
 
-    # make sure we have a valid vm_profile
-    - name: validate vm_profile
-      debug:
-        var: vm_profile
-      when: profile is not subset(vm_profiles)
+    # make sure we have a valid vm_size
+    - name: validate vm_size
+      fail:
+        var: vm_size
+      when: profile is not subset(vm_vals)
 
-    - name: get os_profile
+    - name: get os_type
       set_fact:
-        profile: "{{ [ os_profile ] }}"
+        profile: "{{ [ os_type ] }}"
 
-    # make sure we have a valid os_profile
-    - name: validate os_profile
-      debug:
-        msg: os_profile "{{ os_profile }}" is invalid
-      when: profile is not subset(os_profiles)
+    # make sure we have a valid os_type
+    - name: validate os_type
+      fail:
+        msg: os_type {{ os_type }} is invalid
+      when: profile is not subset(os_vals)
 
-    - name: get fs_profile
+    - name: get fs_type
       set_fact:
-        profile: "{{ [ fs_profile ] }}"
+        profile: "{{ [ fs_type ] }}"
 
-    # make sure we have a valid fs_profile
-    - name: validate fs_profile
+    # make sure we have a valid fs_type
+    - name: validate fs_type
+      fail:
+        msg: fs_type {{ fs_type }} is invalid
+      when: profile is not subset(fs_vals)
+
+    - name: vm_size facts
       debug:
-        msg: fs_profile "{{ fs_profile }}" is invalid
-      when: profile is not subset(fs_profiles)
+        var: vm_spec[vm_size].cpu
 
-    - name: vm_profile facts
+    - name: vm_size facts
       debug:
-        var: vm_specs[vm_profile].cpu
+        var: vm_spec[vm_size].ram
 
-    - name: vm_profile facts
+    - name: os_type facts
       debug:
-        var: vm_specs[vm_profile].ram
+        var: os_spec[os_type].guest
 
-    - name: os_profile facts
+    - name: fs_type facts
       debug:
-        var: os_specs[os_profile].guest
+        var: fs_spec[fs_type].dsk
 
-    - name: fs_profile facts
-      debug:
-        var: fs_specs[fs_profile].dsk
-
-    - name: fs_profile facts
+    - name: fs_type facts
       debug:
         msg: "{{ item.mnt }} + ' ' + {{ item.dev }}"
-      loop: "{{ fs_specs[fs_profile].vol }}"
-      when: fs_profile != "mssql"
+      loop: "{{ fs_spec[fs_type].vol }}"
+      when: fs_type != "mssql"
 
-    - name: fs_profile facts
+    - name: fs_type facts
       debug:
         msg: "{{ item.letter }} + ' ' + {{ item.psize }} + ' ' + {{ item.pnum }} + ' ' + {{ item.dnum }}"
-      loop: "{{ fs_specs[fs_profile].vol }}"
-      when: fs_profile == "mssql"
+      loop: "{{ fs_spec[fs_type].vol }}"
+      when: fs_type == "mssql"
