@@ -46,11 +46,11 @@ This describes how to use the value of a variable as a key into a structured dic
 
 vm_size: vm_small     # guaranteed default value
 vm_spec:
-  vm_small:   { cpu:  1, ram:  2 }
-  vm_medium:  { cpu:  2, ram:  4 }
-  vm_large:   { cpu:  4, ram:  8 }
-  vm_xlarge:  { cpu:  8, ram: 16 }
-  vm_x2large: { cpu: 16, ram: 32 }
+  t2small:   { cpu:  1, ram:  2 }
+  t2medium:  { cpu:  2, ram:  4 }
+  t2large:   { cpu:  4, ram:  8 }
+  t2xlarge:  { cpu:  8, ram: 16 }
+  t2x2large: { cpu: 16, ram: 32 }
 
 # list of valid selectors for vm_spec dictionary
 vm_vals: "{{ vm_spec.keys() }}"
