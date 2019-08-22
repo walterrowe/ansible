@@ -57,7 +57,7 @@ vm_spec:
     ram: 8
 
 # list of valid selectors for vm_spec dictionary
-vm_vals: "{{ vm_spec | flatten(levels=1) }}"
+vm_vals: "{{ vm_spec.keys() }}"
 ```
 
 ### String and Variable Operations
