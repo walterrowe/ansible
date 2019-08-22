@@ -19,7 +19,7 @@ vm_specs:
   vm_xlarge: { cpu: 8, ram: 16 }
 
 # list of valid values for vm_profile
-vm_profiles: "{{ vm_specs | flatten(levels=1) }}"
+vm_profiles: "{{ vm_specs.keys() }}"
 
 os_profile: redhat
 os_specs:
@@ -29,7 +29,7 @@ os_specs:
   windows: { guest: windows9server64bit, scsi: lsilogicsas, nic: e1000e,  image: windows16.iso }
 
 # list of valid values for os_profile
-os_profiles: "{{ os_specs | flatten(levels=1) }}"
+os_profiles: "{{ os_specs.keys() }}"
 
 # filesystems specifications
 # structured dictionary of arrays of JSON lists
@@ -109,4 +109,4 @@ fs_specs:
     ]
 
 # list of valid values for fs_profile
-fs_profiles: "{{ fs_specs | flatten(levels=1) }}"
+fs_profiles: "{{ fs_specs.keys() }}"
