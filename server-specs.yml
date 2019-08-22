@@ -6,17 +6,17 @@
 # fs_profile: oracle
 #
 # vmware_guest specs
-# esx_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
-# esx_specs[os_profile].guest, .scsi, .nic, .image
+# vm_specs[vm_profile].cpu, .ram (.ram must be '.ram * 1024')
+# os_specs[os_profile].guest, .scsi, .nic, .image
 
-vm_profile: vm_small
+vm_profile: t2small
 vm_specs:
 
   # vm sizes for vmware resources
-  vm_small:  { cpu: 1, ram: 2  }
-  vm_medium: { cpu: 2, ram: 4  }
-  vm_large:  { cpu: 4, ram: 8  }
-  vm_xlarge: { cpu: 8, ram: 16 }
+  t2small:  { cpu: 1, ram: 2  }
+  t2medium: { cpu: 2, ram: 4  }
+  t2large:  { cpu: 4, ram: 8  }
+  t2xlarge: { cpu: 8, ram: 16 }
 
 # list of valid values for vm_profile
 vm_profiles: "{{ vm_specs.keys() }}"
