@@ -44,7 +44,7 @@ This describes how to use the value of a variable as a key into a structured dic
 # vm_size vm_small
 # vm_spec[vm_size].cpu, .ram
 
-vm_size: vm_small     # guaranteed default value
+vm_size: t2small     # guaranteed default value
 vm_spec:
   t2small:   { cpu:  1, ram:  2 }
   t2medium:  { cpu:  2, ram:  4 }
