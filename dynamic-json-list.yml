@@ -21,8 +21,8 @@
       vars:
         tmp_list: [ { name: "{{item.key}}", cpu: "{{item.cpu}}", ram: "{{item.ram}}" } ]
 
-    - name: DEBUG - vm_spec
+    - name: DEBUG - old_list
       debug: var=old_list
 
-    - name: DEBUG - that_list
+    - name: DEBUG - new_list
       debug: var=new_list
