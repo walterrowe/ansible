@@ -24,5 +24,9 @@
       vars:
         this_list: { name: "{{item.key}}", cpu: "{{item.cpu}}", ram: "{{item.ram}}" }
 
+    - name: DEBUG - vm_spec
+      debug: var=vm_spec
+
+
     - name: DEBUG - that_list
       debug: var=that_list
