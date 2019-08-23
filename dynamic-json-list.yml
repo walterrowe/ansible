@@ -19,10 +19,10 @@
     
     - name: make new dynamic list
       set_fact:
-        that_list: "{{ that_list|default([]) + [ this_list ] }}"
+        that_list: "{{ that_list|default([]) + this_list }}"
       loop: "{{ vm_spec }}"
       vars:
-        this_list: { name: "{{item.key}}", cpu: "{{item.cpu}}", ram: "{{item.ram}}" }
+        this_list: [ { name: "{{item.key}}", cpu: "{{item.cpu}}", ram: "{{item.ram}}" } ]
 
     - name: DEBUG - vm_spec
       debug: var=vm_spec
