@@ -37,9 +37,9 @@ This describes how to use the value of a variable as a key into a structured dic
 # virtual machine resource profiles
 # structured data complex dictionary
 #
-# vm_specs['vm_small' ].cpu, .ram
-# vm_specs['vm_medium'].cpu, .ram
-# vm_specs['vm_large' ].cpu, .ram
+# vm_spec['vm_small' ].cpu, .ram
+# vm_spec['vm_medium'].cpu, .ram
+# vm_spec['vm_large' ].cpu, .ram
 #
 # vm_size vm_small
 # vm_spec[vm_size].cpu, .ram
