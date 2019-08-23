@@ -4,11 +4,8 @@
   
   vars:
   
-    # dictionary selected variable
-    vm_size: vm_small
-
     # dictionary of values to query
-    vm_spec: [
+    old_list: [
       { key: vm_small,  cpu: 1, ram: 2  },
       { key: vm_medium, cpu: 2, ram: 4  },
       { key: vm_large,  cpu: 4, ram: 8  },
@@ -19,14 +16,13 @@
     
     - name: make new dynamic list
       set_fact:
-        that_list: "{{ that_list|default([]) + this_list }}"
-      loop: "{{ vm_spec }}"
+        new_list: "{{ new_list|default([]) + tmp_list }}"
+      loop: "{{ old_list }}"
       vars:
-        this_list: [ { name: "{{item.key}}", cpu: "{{item.cpu}}", ram: "{{item.ram}}" } ]
+        tmp_list: [ { name: "{{item.key}}", cpu: "{{item.cpu}}", ram: "{{item.ram}}" } ]
 
     - name: DEBUG - vm_spec
-      debug: var=vm_spec
-
+      debug: var=old_list
 
     - name: DEBUG - that_list
-      debug: var=that_list
+      debug: var=new_list
