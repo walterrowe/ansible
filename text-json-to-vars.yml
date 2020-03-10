@@ -7,11 +7,16 @@
     - name: read from file
       shell: cat json.txt
       register: json
-      
+
     - debug: var=json.stdout
+      
+    - set_fact:
+        json_split: "{{ json.stdout.split('\n') }}"
+
+    - debug: var=json_split
     
     - set_fact: {"{{ item.key }}":"{{ item.val }}"}
-      with_dict: "{{ json.stdout.split('\n') }}"
+      with_dict: "{{ '{'+json.stdout.split('\n')+'}' }}"
       
     - debug: var=uidNumber
     - debug: var=gidNumber
