@@ -15,7 +15,7 @@
 
     - debug: var=json_split
     
-    - set_fact: { "{{ item.split(‘: ‘)[0] }}" : "{{ item.split(‘: ‘)[1] }}" }
+    - set_fact: { "{{ item.split(': ')[0] }}" : "{{ item.split(': ')[1] }}" }
       with_items: "{{ json_split }}"
       
     - debug: var=uidNumber
