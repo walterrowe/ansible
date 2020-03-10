@@ -15,8 +15,8 @@
 
     - debug: var=json_split
     
-    - set_fact: {"{{ item.split(': ')[0] }}":"{{ item..split(': ')[1] }}"}
-      with_item: "{{ json_split }}"
+    - set_fact: {"{{ item.key }}":"{{ item.value }}"}
+      with_dict: "{{ json_split }}"
       
     - debug: var=uidNumber
     - debug: var=gidNumber
