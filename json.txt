@@ -1,4 +1,4 @@
 gecos: Rowe, Walter
 shel1: /bin/bash
 uidNumber: 58741
-gudNumber: 19191
+gidNumber: 19191
