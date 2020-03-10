@@ -9,3 +9,12 @@
       register: json
       
     - debug: var=json.stdout
+    
+    - set_fact: {"{{ item.key }}":"{{ item.val }}"}
+      with_dict: "{{response.json.ansible_facts.list_of_passwords}}"
+      
+    - debug: var=uidNumber
+    - debug: var=gidNumber
+    - debug: var=gecos
+    - debug: var=shell
+    
