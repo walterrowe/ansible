@@ -1,0 +1,11 @@
+---
+- name: Convert json string to vars
+  hosts: localhost
+    
+  tasks:
+  
+    - name: read from file
+      shell: cat json.txt
+      register: json
+      
+    - debug: var=json.stdout
