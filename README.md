@@ -143,7 +143,7 @@ This article [Adding strings to an array in Ansible](https://www.jeffgeerling.co
     - debug: var=my_strings
 ```
 
-You can loop through two lists in parallel using "with_together". See [with_together.yml](https://github.com/walterrowe/ansible/blob/master/with_together.yml).
+You can loop through multiple lists in parallel using "with_together". See [with_together.yml](https://github.com/walterrowe/ansible/blob/master/with_together.yml). The example below shows two lists and references them as item.0 and item.1. If you have more lists, reference them as item.3, item.4, etc.
 
 ```
 vms_list:[
