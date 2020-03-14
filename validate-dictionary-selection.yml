@@ -17,13 +17,13 @@
       vm_xlarge: { cpu: 8, ram: 16 }
 
     # dynamic list of valid values for dictionary selector
-    vm_vals: "{{ vm_spec.keys() }}"
+    vm_vals: "{{ vm_spec.keys() | list }}"
 
   tasks:
     
     - name: turn vm_size into list required by subset()
       set_fact:
-        profile: "{{ [ vm_size ] }}"
+        profile: [ "{{ vm_size }}" ]
 
     # make sure we have a valid dictionary selector value
     - name: validate vm_size
