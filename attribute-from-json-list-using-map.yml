@@ -17,10 +17,5 @@
         vm_names1: "{{ vms_list | map(attribute='name') | list }}"
         vm_names2: "{{ vms_list | map(attribute='name') | join(' ') }}"
 
-    - name: show list
-      debug:
-        var: vm_names1
-
-    - name: show string
-      debug:
-        var: vm_names2
+    - debug: var=vm_names1
+    - debug: var=vm_names2
