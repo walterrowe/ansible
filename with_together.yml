@@ -4,10 +4,16 @@
 
   vars:
 
-    vms_list: [
-      { name: vm1, os: redhat7, fs: general,   size: vm_small },
-      { name: vm2, os: redhat7, fs: web,       size: vm_small },
-      { name: vm3, os: redhat7, fs: oracle,    size: vm_large }
+    vms_list1: [
+      { name: vm1, os: redhat7 },
+      { name: vm2, os: redhat7 },
+      { name: vm3, os: redhat7 }
+    ]
+
+    vms_list2: [
+      { fs: general,   size: vm_small },
+      { fs: web,       size: vm_small },
+      { fs: oracle,    size: vm_large }
     ]
 
     mac_addr: [
@@ -24,7 +30,8 @@
     # the vms_list list.
 
     - debug:
-        msg: VM "{{ item.0.name }}" has MAC address is "{{ item.1 }}"
+        msg: "VM {{ item.0.name }} has size {{ item.1.size }} and MAC address {{ item.2 }}"
       with_together:
-        - "{{ vms_list }}"
+        - "{{ vms_list1 }}"
+        - "{{ vms_list2 }}"
         - "{{ mac_addr }}"
