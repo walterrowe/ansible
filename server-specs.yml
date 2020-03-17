@@ -1,4 +1,30 @@
 ---
+# datastore specifications
+# structured dictionary
+
+ds_spec:
+  vc_east:
+    dbms: { cluster: dbms_disks }
+    devl: { cluster: devl_disks }
+    prod: { cluster: prod_disks }
+    test: { cluster: test_disks }
+  vc_west:
+    dbms: { cluster: dbms_disks }
+    devl: { cluster: devl_disks }
+    prod: { cluster: prod_disks }
+    test: { cluster: test_disks }
+  vcloud:
+    dbms: { cluster: dbms_disks }
+    devl: { cluster: devl_disks }
+    prod: { cluster: prod_disks }
+    test: { cluster: 'G-TINTRI-04' }
+
+# list of valid values for vm_size
+ds_vals: "{{ ds_spec.keys() | list }}"
+
+
+
+
 # filesystems specifications
 # structured dictionary
 #
@@ -19,8 +45,8 @@ vm_spec:
   t2xlarge:  { cpu:  8, ram: 16 }
   t2x2large: { cpu: 16, ram: 32 }
 
-# list of valid values for vm_profile
-vm_vals: "{{ vm_spec.keys() }}"
+# list of valid values for vm_size
+vm_vals: "{{ vm_spec.keys() | list }}"
 
 os_type: redhat
 os_spec:
@@ -30,7 +56,10 @@ os_spec:
   windows: { guest: windows9server64bit, scsi: lsilogicsas, nic: e1000e,  image: windows16.iso }
 
 # list of valid values for os_profile
-os_vals: "{{ os_spec.keys() }}"
+os_vals: "{{ os_spec.keys() | list }}"
+
+
+
 
 # filesystems specifications
 # structured dictionary of arrays of JSON lists
@@ -110,4 +139,4 @@ fs_spec:
     ]
 
 # list of valid values for fs_profile
-fs_vals: "{{ fs_spec.keys() }}"
+fs_vals: "{{ fs_spec.keys() | list }}"
