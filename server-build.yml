@@ -21,6 +21,10 @@
 
   tasks:
 
+    - debug: var=vm_vals
+    - debug: var=os_vals
+    - debug: var=fs_vals
+
     - name: get vm_size
       set_fact:
         profile: "{{ [ vm_size ] }}"
@@ -28,7 +32,7 @@
     # make sure we have a valid vm_size
     - name: validate vm_size
       fail:
-        var: vm_size
+        msg: Invalid size specification {{ vm_size }}
       when: profile is not subset(vm_vals)
 
     - name: get os_type
@@ -38,7 +42,7 @@
     # make sure we have a valid os_type
     - name: validate os_type
       fail:
-        msg: os_type {{ os_type }} is invalid
+        msg: Invalid operating system specificatino {{ os_type }}
       when: profile is not subset(os_vals)
 
     - name: get fs_type
@@ -48,7 +52,7 @@
     # make sure we have a valid fs_type
     - name: validate fs_type
       fail:
-        msg: fs_type {{ fs_type }} is invalid
+        msg: Invalid filesystem specification {{ fs_type }}
       when: profile is not subset(fs_vals)
 
     - name: vm_size facts

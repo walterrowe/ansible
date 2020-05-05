@@ -20,7 +20,7 @@ vm_spec:
   t2x2large: { cpu: 16, ram: 32 }
 
 # list of valid values for vm_profile
-vm_vals: "{{ vm_spec.keys() }}"
+vm_vals: "{{ vm_spec.keys() | list }}"
 
 os_type: redhat
 os_spec:
@@ -30,7 +30,7 @@ os_spec:
   windows: { guest: windows9server64bit, scsi: lsilogicsas, nic: e1000e,  image: windows16.iso }
 
 # list of valid values for os_profile
-os_vals: "{{ os_spec.keys() }}"
+os_vals: "{{ os_spec.keys() | list }}"
 
 # filesystems specifications
 # structured dictionary of arrays of JSON lists
@@ -110,4 +110,4 @@ fs_spec:
     ]
 
 # list of valid values for fs_profile
-fs_vals: "{{ fs_spec.keys() }}"
+fs_vals: "{{ fs_spec.keys() | list }}"
