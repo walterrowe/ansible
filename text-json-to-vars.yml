@@ -1,0 +1,18 @@
+---
+- name: Convert json string to vars
+  hosts: localhost
+    
+  tasks:
+  
+    - name: read from file
+      shell: cat json.txt
+      register: json
+
+    - set_fact: { "{{ 'my_'+item.split(': ')[0] }}" : "{{ item.split(': ')[1] }}" }
+      with_items: "{{ json.stdout_lines }}"
+      
+    - debug: var=my_uidNumber
+    - debug: var=my_gidNumber
+    - debug: var=my_gecos
+    - debug: var=my_shell
+    

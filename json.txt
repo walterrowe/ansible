@@ -1,0 +1,4 @@
+gecos: Rowe, Walter
+shell: /bin/bash
+uidNumber: 58741
+gidNumber: 19191
