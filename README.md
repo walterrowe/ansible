@@ -44,15 +44,15 @@ This describes how to use the value of a variable as a key into a structured dic
 # vm_size vm_small
 # vm_spec[vm_size].cpu, .ram
 
-# guaranteed default value
-vm_size: t2small
-
 vm_spec:
   t2small:   { cpu:  1, ram:  2 }
   t2medium:  { cpu:  2, ram:  4 }
   t2large:   { cpu:  4, ram:  8 }
   t2xlarge:  { cpu:  8, ram: 16 }
   t2x2large: { cpu: 16, ram: 32 }
+
+# guaranteed default value
+vm_size: t2small
 
 # create a list of keys for vm_spec dictionary
 vm_keys: "{{ vm_spec.keys() | list }}"
