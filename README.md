@@ -66,6 +66,50 @@ tasks:
   when: vm_size not in vm_keys
 ```
 
+### Creating Dictionaries in Real-Time
+
+There are times when you need to create structured data in real-time. This is useful in Ansible Tower workflows where upstream templates need to pass per-host information to downstream templates in the workflow. With the help from other online articles I figured out this solution.
+
+```yaml
+    - name: Create and Add items to dictionary
+      set_stats: 
+        data:
+          my_dict: "{{ my_dict | default({}) | combine ({ item.key : item.value }) }}"
+      with_items:
+        - { "key": "{{ inventory_hostname_short }}" , "value": {
+              "var_a" : "{{ var_a_val }}",
+              "var_b" : "{{ var_b_val }}",
+              "var_c" : "{{ var_c_val }}"
+            }
+          }
+```
+
+This results in a dictionary that is passed back to ansible tower as an artifact. Downstream templates in the workflow will receive it in extra\_vars.
+
+```yaml
+my_dict:
+  host1:
+    var_a: host1_actual_var_a_val
+    var_b: host1_actual_var_b_val
+    var_c: host1_actual_var_c_val
+  host2:
+    var_a: host2_actual_var_a_val
+    var_b: host2_actual_var_b_val
+    var_c: host2_actual_var_c_val
+  hostN:
+    var_a: host3_actual_var_a_val
+    var_b: host3_actual_var_b_val
+    var_c: host3_actual_var_c_val
+```
+
+Downstream templates can access this data as follows:
+
+```yaml
+my_dict[inventory_hostname_short].var_a
+my_dict[inventory_hostname_short].var_b
+my_dict[inventory_hostname_short].var_c
+```
+
 ### String and Variable Operations
 
 Strings in Ansible are strings in Python which are lists of characters. Lists can be concatenated using the "+" operating.
