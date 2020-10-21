@@ -89,17 +89,17 @@ This results in a dictionary that is passed back to ansible tower as an artifact
 ```yaml
 my_dict:
   host1:
-    var_a: host1_actual_var_a_val
-    var_b: host1_actual_var_b_val
-    var_c: host1_actual_var_c_val
+    var_a: host1_var_a_val
+    var_b: host1_var_b_val
+    var_c: host1_var_c_val
   host2:
-    var_a: host2_actual_var_a_val
-    var_b: host2_actual_var_b_val
-    var_c: host2_actual_var_c_val
+    var_a: host2_var_a_val
+    var_b: host2_var_b_val
+    var_c: host2_var_c_val
   hostN:
-    var_a: host3_actual_var_a_val
-    var_b: host3_actual_var_b_val
-    var_c: host3_actual_var_c_val
+    var_a: host3_var_a_val
+    var_b: host3_var_b_val
+    var_c: host3_var_c_val
 ```
 
 Downstream templates can access this data as follows:
