@@ -29,7 +29,7 @@ $ git merge upstream/master             # merge upstream into my fork
 $ git push                              # push to my fork on github
 ```
 
-### Accessing Structured Data via Variable
+### Accessing Dictionaries of Structured Data via Variables
 
 This describes how to use the value of a variable as a key into a structured dictionary to extract values. The concept would be that the variable’s value would be passed into the playbook at run time. In Ansible Tower / AWX, a multiple choice survey can restrict selection to known values. For a more detailed example look at [server-specs.yml](https://github.com/walterrowe/ansible/blob/master/server-specs.yml)
 
@@ -41,7 +41,7 @@ This describes how to use the value of a variable as a key into a structured dic
 # vm_spec['vm_medium'].cpu, .ram
 # vm_spec['vm_large' ].cpu, .ram
 #
-# vm_size vm_small
+# vm_size: vm_small
 # vm_spec[vm_size].cpu, .ram
 
 vm_spec:
@@ -89,17 +89,17 @@ This results in a dictionary that is passed back to ansible tower as an artifact
 ```yaml
 my_dict:
   host1:
-    var_a: host1_var_a_val
-    var_b: host1_var_b_val
-    var_c: host1_var_c_val
+    var_a: "host1_var_a_val"
+    var_b: "host1_var_b_val"
+    var_c: "host1_var_c_val"
   host2:
-    var_a: host2_var_a_val
-    var_b: host2_var_b_val
-    var_c: host2_var_c_val
+    var_a: "host2_var_a_val"
+    var_b: "host2_var_b_val"
+    var_c: "host2_var_c_val"
   hostN:
-    var_a: host3_var_a_val
-    var_b: host3_var_b_val
-    var_c: host3_var_c_val
+    var_a: "host3_var_a_val"
+    var_b: "host3_var_b_val"
+    var_c: "host3_var_c_val"
 ```
 
 Downstream templates can access this data as follows:
