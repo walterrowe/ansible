@@ -4,7 +4,7 @@
   
   vars:
   
-    # dictionary selected variable
+    # dictionary key variable
     vm_size: vm_small
 
     # dictionary of values to query
@@ -16,20 +16,16 @@
       vm_large:  { cpu: 4, ram: 8  }
       vm_xlarge: { cpu: 8, ram: 16 }
 
-    # dynamic list of valid values for dictionary selector
+    # dynamic list of valid dictionary keys
     vm_vals: "{{ vm_spec.keys() | list }}"
 
   tasks:
-    
-    - name: turn vm_size into list required by subset()
-      set_fact:
-        profile: [ "{{ vm_size }}" ]
 
-    # make sure we have a valid dictionary selector value
+    # validate we have known dictionary key
     - name: validate vm_size
       fail:
         msg: Invalid vm_size size {{ vm_size }}
-      when: profile is not subset(vm_vals)
+      when: vm_size not in vm_vals
 
     - name: show value of vm_size
       debug:
