@@ -1,0 +1,37 @@
+---
+##
+## dynamic inventory from variable, or 'all'
+##
+## play 1 adds a variable to an inventory
+## play 2 inventory is 'all,!localhost'
+##
+## must exclude localhost in play 2 because
+## it is explicitly part of the inventory
+## from play 1 hosts
+##
+
+##
+## play 1 - add to inventory if var defined
+##
+- name: add var to inventory
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  
+    - name: add hosts to inventory
+      when: host_list is defined
+      add_name:
+        name: "{{ item }}"
+      loop: "{{ host_list | list }}"
+
+##
+## play 2 - main workload of playbook
+##
+- name: main workload
+  hosts: all,!localhost
+  gather_facts: yes
+  tasks:
+
+    - name: main workload
+      debug: var=inventory_hostname
+...
