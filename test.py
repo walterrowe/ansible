@@ -31,4 +31,4 @@ else:
     print("1. Customer",name,"not found.")
 
 print("2. Customer",name,"is",customers.setdefault(name))
-print("3. Customer",name,"is",customers.setdefault(name,'not found.'))
+print("3. Customer",name,"is",customers.get(name,"not found."))
