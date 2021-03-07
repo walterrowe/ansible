@@ -244,26 +244,39 @@ Read the [Ansible Variables](https://docs.ansible.com/ansible/latest/user_guide/
 
 ### Mermaid Diagrams
 
+This show how to create diagrams using markdown syntax with the [Mermaid](https://mermaid-js.github.io/mermaid/#/) language.
+
 ```mermaid
+
+%% graphs can be LR, RL, TB, BT
 graph LR
 
 %% node styles
-classDef pink-black  fill:#faf,stroke:#333,stroke-width:1.5px
-classDef pink-red    fill:#faf,stroke:#c00,stroke-width:1.5px
-classDef green       fill:#9e9,stroke:#0a0,stroke-width:1.5px
-classDef blue        fill:#ccf,stroke:#88f,stroke-width:1.5px
+classDef fuscia      fill:#fbf,stroke:#e6e,stroke-width:1.5px
+classDef green      fill:#9e9,stroke:#0a0,stroke-width:1.5px
+classDef blue       fill:#ddf,stroke:#88f,stroke-width:1.5px
+classDef red        fill:#fbb,stroke:#f11,stroke-width:1.5px
 
 %% subgraph styles
-style sub1           fill:#9e9,stroke:#0a0,stroke-width:1.5px
+style sub1          fill:#9e9,stroke:#0a0,stroke-width:1.5px
+style sub2          fill:#ddf,stroke:#66f,stroke-width:1.5px
+style sub3          fill:#fbb,stroke:#f33,stroke-width:1.5px
 
-a(A):::pink-red
-b(B):::pink-black
-c(C):::green
-id1[(Database)]:::blue
+%% define some nodes
+a(Actor):::red
+b(Block):::fuscia
+c(Computer):::green
 
-subgraph sub1[Subgraph 1]
-a --> b
-end
+  %% define some subgraphs
+  subgraph sub1[Subgraph 1]
+    a --> b
+  end
 
-b --> c
+  subgraph sub2[Subgraph 2]
+    b --> c
+    c --> d
+    subgraph sub3[Subgraph 3]
+      d[(Database)]:::blue
+    end
+  end
 ```
