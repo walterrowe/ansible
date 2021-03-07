@@ -4,14 +4,13 @@ header: 'National Institute of Standards and Technology'
 footer: 'Walter Rowe'
 paginate: true
 _paginate: false
-
+backgroundImage: "linear-gradient(to bottom, #cccccc, #aaaaaa)"
 ---
 
 # Title
 ### Subtitle
 
 ---
-<!-- backgroundImage: "linear-gradient(to bottom, #cccccc, #999999)" -->
 
 # Slide 1 Title
 
