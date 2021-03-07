@@ -20,7 +20,7 @@ for customer in customers:
         break
         
 # Search the ID in the dictionary
-if customer[name]:
+if name in customers.keys():
     print(customers[name])
 else:
-    print("Customer {} not found.", name)
+    print("Customer“,name,“not found.")
