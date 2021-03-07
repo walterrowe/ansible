@@ -29,3 +29,6 @@ if name in customers.keys():
     print("Customer",name,"is",customers[name])
 else:
     print("Customer",name,"not found.")
+
+print("Customer",name,"is",customers.setdefault(name))
+print("Customer",name,"is",customers.setdefault(name,'not found.'))
