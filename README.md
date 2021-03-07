@@ -72,7 +72,7 @@ There are times when you need to create structured data in real-time. This is us
 
 ```yaml
     - name: Create and Add items to dictionary
-      set_stats: 
+      set_stats:
         data:
           my_dict: "{{ my_dict | default({}) | combine ({ item.key : item.value }) }}"
       with_items:
@@ -175,7 +175,7 @@ This article [Adding strings to an array in Ansible](https://www.jeffgeerling.co
   gather_facts: no
 
   tasks:
-  
+
     - name: Initialize an empty list for our strings
       set_fact:
         my_strings: []
@@ -241,3 +241,29 @@ when: (ansible_facts['distribution'] == "RedHat" and ansible_facts['distribution
 Read about Python strings to learn more about Ansible strings.
 
 Read the [Ansible Variables](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html) doc for more info on variable references.
+
+### Mermaid Diagrams
+
+```mermaid
+graph LR
+
+%% node styles
+classDef pink-black  fill:#faf,stroke:#333,stroke-width:1.5px
+classDef pink-red    fill:#faf,stroke:#c00,stroke-width:1.5px
+classDef green       fill:#9e9,stroke:#0a0,stroke-width:1.5px
+classDef blue        fill:#ccf,stroke:#88f,stroke-width:1.5px
+
+%% subgraph styles
+style sub1           fill:#9e9,stroke:#0a0,stroke-width:1.5px
+
+a(A):::pink-red
+b(B):::pink-black
+c(C):::green
+id1[(Database)]:::blue
+
+subgraph sub1[Subgraph 1]
+a --> b
+end
+
+b --> c
+```
