@@ -1,3 +1,6 @@
+##
+## https://linuxhint.com/python_scripts_beginners_guide/
+##
 # Define a dictionary
 customers = {
     '06753':'Mehzabin Afroze',
