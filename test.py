@@ -26,9 +26,9 @@ for customer in customers:
         
 # Search the ID in the dictionary
 if name in customers.keys():
-    print("Customer",name,"is",customers[name])
+    print("1. Customer",name,"is",customers[name])
 else:
-    print("Customer",name,"not found.")
+    print("1. Customer",name,"not found.")
 
-print("Customer",name,"is",customers.setdefault(name))
-print("Customer",name,"is",customers.setdefault(name,'not found.'))
+print("2. Customer",name,"is",customers.setdefault(name))
+print("3. Customer",name,"is",customers.setdefault(name,'not found.'))
