@@ -3,9 +3,9 @@
 ##
 # Define a dictionary
 machines = {
-    't2.small':     { 'cpu':1, 'ram':2 },
-    't2.medium':    { 'cpu':2, 'ram':4 },
-    't2.large':     { 'cpu':4, 'ram':8 }
+    't2.small'  : { 'cpu':1, 'ram':2 },
+    't2.medium' : { 'cpu':2, 'ram':4 },
+    't2.large'  : { 'cpu':4, 'ram':8 }
 }
 
 for size in machines:
