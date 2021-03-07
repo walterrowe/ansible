@@ -21,14 +21,16 @@ name = input("Enter customer ID:")
 # Search the ID in the dictionary
 for customer in customers:
     if customer == name:
-        print(customers[customer])
-        break
+        print("1. Customer",name,"is",customers[customer])
         
 # Search the ID in the dictionary
 if name in customers.keys():
-    print("1. Customer",name,"is",customers[name])
+    print("2. Customer",name,"is",customers[name])
 else:
-    print("1. Customer",name,"not found.")
+    print("2. Customer",name,"not found.")
 
-print("2. Customer",name,"is",customers.setdefault(name))
-print("3. Customer",name,"is",customers.get(name,"not found."))
+# test setdefault()
+print("3. Customer",name,"is",customers.setdefault(name))
+
+# test get()
+print("4. Customer",name,"is",customers.get(name,"not found."))
