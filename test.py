@@ -23,4 +23,4 @@ for customer in customers:
 if name in customers.keys():
     print(customers[name])
 else:
-    print("Customer“,name,“not found.")
+    print("Customer",name,"not found.")
