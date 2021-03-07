@@ -17,21 +17,24 @@
   hosts: localhost
   gather_facts: no
   tasks:
-  
+
     - name: add hosts to inventory
-      when: host_list is defined
-      add_name:
+      when:
+        - host_list is defined
+        - (host_list.split(',')|list) is iterable
+      add_host:
         name: "{{ item }}"
-      loop: "{{ host_list | list }}"
+      loop: "{{ host_list.split(',') | list }}"
 
 ##
 ## play 2 - main workload of playbook
 ##
 - name: main workload
   hosts: all,!localhost
-  gather_facts: yes
+  gather_facts: no
   tasks:
 
     - name: main workload
       debug: var=inventory_hostname
+      delegate_to: localhost
 ...
