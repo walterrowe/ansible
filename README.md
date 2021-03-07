@@ -23,9 +23,9 @@ $ git remote -v
 [Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork) describes how to sync upstream commits into my fork.
 
 ```shell
+$ git switch master                     # switch to master branch
 $ git fetch upstream                    # fetch upstream to local
-$ git checkout master                   # checkout my master branch
-$ git merge upstream/master             # merge upstream into my fork
+$ git merge upstream/master             # merge upstream into master
 $ git push                              # push to my fork on github
 ```
 
