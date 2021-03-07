@@ -22,18 +22,25 @@ for customer in customers:
 name = input("Enter customer ID:")
 
 # Search the ID in the dictionary
+found = False
 for customer in customers:
     if customer == name:
+        found = True
         print("1. Customer",name,"is",customers[customer])
-        
+        break
+if not Found:
+    print("1. Customer",name,"not found.")
+
+
 # Search the ID in the dictionary
+# test dict.keys()
 if name in customers.keys():
     print("2. Customer",name,"is",customers[name])
 else:
     print("2. Customer",name,"not found.")
 
-# test setdefault()
+# test dict.setdefault()
 print("3. Customer",name,"is",customers.setdefault(name))
 
-# test get()
+# test dict.get()
 print("4. Customer",name,"is",customers.get(name,"not found."))
