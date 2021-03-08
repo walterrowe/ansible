@@ -11,37 +11,21 @@ _class:
   - lead
 -->
 
-# Title
-### Subtitle
+# Automated Server Provisioning
+### Monthly Status Report
 
 ---
 
-# Slide 1 Title
+# User Stories
 
-[Link to Marp Site](https://marp.app/)
+Issues
 
-Topic 1
-- bullet 1
-  - sub bullet 1
-  - sub bullet 2
+  - Added:
+  - Closed:
 
----
+Milestones
 
-# Slide 2 Title
+  - Added:
+  - Closed:
 
-Topic 2
-- bullet 1
-- bullet 2
-
-more code below
-
-```python
-machines = {
-    't2.small'  : { 'cpu':1, 'ram':2 },
-    't2.medium' : { 'cpu':2, 'ram':4 },
-    't2.large'  : { 'cpu':4, 'ram':8 }
-}
-
-for size in machines:
-    print ("Machine Size",size,"has",machines[size]['cpu'],"CPUs and",machines[size]['ram'],"GB RAM")
-```
+Total:  Closed: Percent:
