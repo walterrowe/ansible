@@ -1,13 +1,13 @@
 ---
-theme: gaia
-class: gaia
+theme: default
+class: invert
 header: 'National Institute of Standards and Technology'
 footer: 'Walter Rowe'
+paginate: true
 ---
 <!--
-paginate: true
 _class:
-  - gaia
+  - invert
   - lead
 -->
 
