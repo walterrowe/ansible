@@ -1,10 +1,11 @@
 ---
-theme: default
+
+theme: gaia
+class: invert
 header: 'National Institute of Standards and Technology'
 footer: 'Walter Rowe'
 paginate: true
-_paginate: false
-backgroundImage: "linear-gradient(to bottom, #cccccc, #aaaaaa)"
+
 ---
 
 # Title
@@ -18,11 +19,11 @@ backgroundImage: "linear-gradient(to bottom, #cccccc, #aaaaaa)"
 
 Topic 1
 - bullet 1
+  - subbullet 1
+  - subbullet 2
 - bullet 2
-
-centered
-
-right aligned
+  1. subbullet 1
+  1. subbullet 2
 
 ---
 
