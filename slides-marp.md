@@ -1,12 +1,18 @@
 ---
 
 theme: gaia
-class: invert
+class: gaia
 header: 'National Institute of Standards and Technology'
 footer: 'Walter Rowe'
 paginate: true
 
 ---
+
+<!--
+_class:
+  - gaia
+  - lead
+-->
 
 # Title
 ### Subtitle

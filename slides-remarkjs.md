@@ -7,7 +7,6 @@ class: middle,center
 
 ---
 name: content
-class: center
 
 # Slide 1 Title
 
