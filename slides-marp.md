@@ -1,14 +1,11 @@
 ---
-
 theme: gaia
 class: gaia
 header: 'National Institute of Standards and Technology'
 footer: 'Walter Rowe'
-paginate: true
-
 ---
-
 <!--
+paginate: true
 _class:
   - gaia
   - lead
@@ -25,11 +22,8 @@ _class:
 
 Topic 1
 - bullet 1
-  - subbullet 1
-  - subbullet 2
-- bullet 2
-  1. subbullet 1
-  1. subbullet 2
+  - sub bullet 1
+  - sub bullet 2
 
 ---
 
