@@ -1,8 +1,8 @@
 #!/usr/local/bin/python3
 
-##
-## https://linuxhint.com/python_scripts_beginners_guide/
-##
+## https://docs.python.org/3/
+## https://pythonexamples.org/python-basic-examples/
+
 import sys, re
 
 # Define a dictionary
