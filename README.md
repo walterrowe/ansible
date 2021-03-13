@@ -1,6 +1,6 @@
 # Git and Ansible Tips & Tricks
 
-Python expressions are valid in YAML playbook variable evaluations.
+Most Python expressions and filters are valid in YAML playbooks since lists and dictionaries work the same, and ansible is built on Python.
 
 ### Forking Git Repos and Syncing with the Upstream Repo
 
@@ -19,6 +19,15 @@ Add a new remote pointing to upstream source of my fork, then list remotes.
 $ git remote add upstream {git-server}/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 $ git remote -v
 ```
+
+If you need to update which commit is associated with a tag, you simply add the tag again with the `-f` option to force it to be updated if it already exists. If your repository is associated with a remote, you also need to push the tag update to the remote with the `-f` force option.
+
+```shell
+$ git tag -f -a -m message tag
+$ git push -f --tags
+```
+
+This is particularly important if you use tags with releases. A release creates a tag and associates it with latest commit of the master branch at the time the release is created. Future commits to the master branch will be ahead of the commit associated with the tag. This process will update the commit that is associated with the release.
 
 [Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork) describes how to sync upstream commits into my fork.
 
