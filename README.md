@@ -27,7 +27,7 @@ $ git tag -f -a -m message tag
 $ git push -f --tags
 ```
 
-This is particularly important if you use tags with releases. A release creates a tag and associates it with latest commit of the master branch at the time the release is created. Future commits to the master branch will be ahead of the commit associated with the tag. This process will update the commit that is associated with the release.
+This is particularly important if you use tags with releases. A release creates a tag and associates it with latest commit of the master branch at the time the release is created. Future commits to the master branch will be ahead of the commit associated with the tag. This process will update the commit that the tag that is associated with the release.
 
 [Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork) describes how to sync upstream commits into my fork.
 
