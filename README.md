@@ -20,14 +20,23 @@ $ git remote add upstream {git-server}/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 $ git remote -v
 ```
 
-If you need to update which commit is associated with a tag, you simply add the tag again with the `-f` option to force it to be updated if it already exists. If your repository is associated with a remote, you also need to push the tag update to the remote with the `-f` force option.
+If you need to update which commit is associated with a tag, you add the tag again with the `-f` option to force git to update it if it already exists. If your repository is associated with a remote, you then need to push the tag update to the remote with the `-f` force option.
 
 ```shell
-$ git tag -f -a -m {message} {tag}
+$ git tag -f -a -m "tag message" "tag"
 $ git push -f --tags
 ```
 
-This is particularly important if you use tags with releases. A release creates a tag and associates it with latest commit of the master branch at the time the release is created. Future commits to the master branch will be ahead of the commit associated with the tag. This process will update the commit that the tag that is associated with the release.
+This is particularly useful if you use releases in GitHub / GitLab. When you create a release, a corresponding tag is created and associated with most recent commit in the master branch. Any future commits to the master branch will be ahead of the commit associated with the release tag. If you want those newer commits to be included in the release, you must update the commit associated with the release tag.
+
+Assume you create a release v1.0 for your project on GitHub / GitLab, which in turn creates a corresponding tag v1.0 associated with the newest commit to your master branch. If you make new commits to the master branch and want them included in release v1.0, you need to update the commit associated with the v1.0 tag. To accomplish this you may use commands similat to this:
+
+```shell
+$ git tag -f -a -m "add more to the CHANGELOG for v1.0" "v1.0"
+$ git push -f --tags
+```
+
+This would force an update to the v1.0 tag to associate with the newest commit, and the force that update on the remote.
 
 [Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork) describes how to sync upstream commits into my fork.
 
