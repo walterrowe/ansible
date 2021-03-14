@@ -20,8 +20,9 @@ else:
     size = input("Enter a machine size(s) separated by commas: ")
     sizes = re.split('\s*[,]\s*',size)
 
-#for size in sizes:
-#    print ("Machine size(s) entered: {:s}".format(size))
+# could also use 'for size in sizes.keys():'
+for size in sizes:
+    print ("Machine size(s) entered: {:s}".format(size))
 
 # using ' '.join(list) creates a string with ' ' between each element in list
 print ("Machine size(s) entered: {:s}".format(' '.join(sizes)))
