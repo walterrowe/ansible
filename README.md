@@ -23,7 +23,7 @@ $ git remote -v
 If you need to update which commit is associated with a tag, you simply add the tag again with the `-f` option to force it to be updated if it already exists. If your repository is associated with a remote, you also need to push the tag update to the remote with the `-f` force option.
 
 ```shell
-$ git tag -f -a -m message tag
+$ git tag -f -a -m {message} {tag}
 $ git push -f --tags
 ```
 
