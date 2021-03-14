@@ -2,8 +2,10 @@
 
 ## https://docs.python.org/3/
 ## https://pythonexamples.org/python-basic-examples/
+## https://www.digitalocean.com/community/tutorial_series/how-to-code-in-python-3
 
-import sys, re
+import sys      # system library
+import re       # regular expressions
 
 # Define a dictionary
 machines = {
