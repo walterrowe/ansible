@@ -8,21 +8,21 @@ Most Python expressions and filters are valid in YAML playbooks since lists and 
 
 Clone my fork to local and list remotes
 
-```shell
+```bash
 $ git clone {git-server}/MY_ACCOUNT/MY_REPOSITORY.git
 $ git remote -v
 ```
 
 Add a new remote pointing to upstream source of my fork, then list remotes.
 
-```shell
+```bash
 $ git remote add upstream {git-server}/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
 $ git remote -v
 ```
 
 If you need to update which commit is associated with a tag, you add the tag again with the `-f` option to force git to update it if it already exists. If your repository is associated with a remote, you then need to push the tag update to the remote with the `-f` force option.
 
-```shell
+```bash
 $ git tag -f -a -m "tag message" "tag"
 $ git push -f --tags
 ```
@@ -31,7 +31,7 @@ This is particularly useful if you use releases in GitHub / GitLab. When you cre
 
 Assume you create a release v1.0 for your project on GitHub / GitLab, which in turn creates a corresponding tag v1.0 associated with the newest commit to your master branch. If you make new commits to the master branch and want them included in release v1.0, you need to update the commit associated with the v1.0 tag. To accomplish this you may use commands similat to this:
 
-```shell
+```bash
 $ git tag -f -a -m "add more to the CHANGELOG for v1.0" "v1.0"
 $ git push -f --tags
 ```
@@ -40,7 +40,7 @@ This would force an update to the v1.0 tag to associate with the newest commit, 
 
 [Syncing A Fork](https://help.github.com/en/articles/syncing-a-fork) describes how to sync upstream commits into my fork.
 
-```shell
+```bash
 $ git switch master                     # switch to master branch
 $ git fetch upstream                    # fetch upstream to local
 $ git merge upstream/master             # merge upstream into master
